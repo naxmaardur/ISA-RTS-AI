@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    private int _currentArmyIndex = 0;
+    
+    public int CurrentArmyIndex {get { return _currentArmyIndex; } }
+
     // Start is called before the first frame update
     void Start()
     {
