@@ -1,0 +1,1 @@
+All code written here should be only player sided and should not be directly connected to any of the game mechanics other then UI.
