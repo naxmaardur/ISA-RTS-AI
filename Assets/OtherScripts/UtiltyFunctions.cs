@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public static class UtiltyFunctions 
 {
@@ -34,6 +35,26 @@ public static class UtiltyFunctions
         v3.x = Mathf.Round(Mathf.Round(v3.x) / gridSize) * gridSize;
         v3.z = Mathf.Round(Mathf.Round(v3.z) / gridSize) * gridSize;
         return v3;
+    }
+
+    //checks if the mouse is over ui or not
+    public static bool OverUI()
+    {
+        PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+        pointerEventData.position = Input.mousePosition;
+
+        List<RaycastResult> raycastResultList = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerEventData, raycastResultList);
+        for (int i = 0; i < raycastResultList.Count; i++)
+        {
+            if (raycastResultList[i].gameObject.GetComponent<MouseUIClickthrough>() != null)
+            {
+                raycastResultList.RemoveAt(i);
+                i--;
+            }
+        }
+
+        return raycastResultList.Count > 0;
     }
 
 
