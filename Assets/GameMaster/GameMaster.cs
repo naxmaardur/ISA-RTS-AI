@@ -8,7 +8,7 @@ public class GameMaster : Singleton<GameMaster>
     public LayerMask GroundLayer { get { return _groundlayerMask; } }
 
     private ArmyAssetList[] armyAssets = {null,null };
-    private ArmyMaster[] ArmyMasters = {null,null};
+    private ArmyMaster[] _armyMasters = {null,null};
 
 
 
@@ -20,13 +20,18 @@ public class GameMaster : Singleton<GameMaster>
     // Start is called before the first frame update
     void Awake()
     {
+        Instance = this;
         armyAssets[0] = new ArmyAssetList(0);
+        //temp code{
+        _armyMasters[0] = new ArmyMaster();
+        _armyMasters[0].IsPlayer = true;
+        //}
     }
 
     //find the players army in the list of all armies
     public ArmyMaster GetPlayer()
     {
-        foreach (ArmyMaster armyMaster in ArmyMasters )
+        foreach (ArmyMaster armyMaster in _armyMasters )
         {
             if(armyMaster.IsPlayer) { return armyMaster; }
         }

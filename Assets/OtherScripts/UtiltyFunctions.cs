@@ -17,10 +17,10 @@ public static class UtiltyFunctions
     public static Vector3 getPosition()
     {
         Vector3 MousePotion = Input.mousePosition;
-        MousePotion = Camera.current.ScreenToWorldPoint(MousePotion);
+        MousePotion = Camera.main.ScreenToWorldPoint(MousePotion);
         RaycastHit hit;
         Vector3 v3 = new Vector3();
-        if (Physics.Raycast(MousePotion, Camera.current.transform.forward, out hit, Mathf.Infinity, GameMaster.Instance.GroundLayer))
+        if (Physics.Raycast(MousePotion, Camera.main.transform.forward, out hit, Mathf.Infinity, GameMaster.Instance.GroundLayer))
         {
             v3 = hit.point;
         }

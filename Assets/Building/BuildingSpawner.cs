@@ -11,6 +11,10 @@ public class BuildingSpawner : Singleton<BuildingSpawner>
     private BoxCollider _collider;
     private BuildingBase _buildingInstance;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Update()
     {
