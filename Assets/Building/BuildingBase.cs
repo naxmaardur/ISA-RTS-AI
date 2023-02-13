@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BuildingBase : MonoBehaviour
 {
+    private int _team;
+    private ArmyMaster _army;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,12 @@ public class BuildingBase : MonoBehaviour
     void Update()
     {
         
+    }
+
+
+    public void AddtoMaster(ArmyMaster armyMaster)
+    {
+        armyMaster.AddBuildingToList(this);
+        _army = armyMaster;
     }
 }

@@ -9,6 +9,8 @@ public class BuildingListUI : MonoBehaviour
 
     private ArmyMaster _playerArmy;
     private ArmyAssetList _armyAssets;
+    [SerializeField]
+    private GameObject _buildingUIButtonPrefab;
     // Start is called before the first frame update
     void Start()
     {

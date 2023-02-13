@@ -8,7 +8,7 @@ public class GameMaster : Singleton<GameMaster>
     public LayerMask GroundLayer { get { return _groundlayerMask; } }
 
     private ArmyAssetList[] armyAssets = {null,null };
-    private ArmyMaster[] ArmyMasters = { };
+    private ArmyMaster[] ArmyMasters = {null,null};
 
 
 
