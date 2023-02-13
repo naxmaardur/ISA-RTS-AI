@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameMaster : Singleton<GameMaster>
 {
+    [SerializeField]
     private LayerMask _groundlayerMask;
     public LayerMask GroundLayer { get { return _groundlayerMask; } }
 

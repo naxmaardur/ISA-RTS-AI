@@ -14,6 +14,7 @@ public class BuildingSpawner : Singleton<BuildingSpawner>
     private void Awake()
     {
         Instance = this;
+        _collider = GetComponent<BoxCollider>();
     }
 
     private void Update()
@@ -21,6 +22,8 @@ public class BuildingSpawner : Singleton<BuildingSpawner>
         if(!_active) { return; }
 
         if(UtiltyFunctions.OverUI()) { return; }
+
+       
 
         transform.position = UtiltyFunctions.getGridPointOnMap();
 
@@ -30,6 +33,9 @@ public class BuildingSpawner : Singleton<BuildingSpawner>
             //check if not overlapping
             _buildingInstance.transform.position = transform.position;
             _buildingInstance.AddtoMaster(GameMaster.Instance.GetPlayer());
+            _active = false;
+            transform.position = new Vector3(0, 600, 0);
+            _buildingInstance = null;
         }
         //removes the building and deactivates
         if (Input.GetMouseButtonDown(1))
