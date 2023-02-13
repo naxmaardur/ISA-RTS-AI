@@ -20,6 +20,7 @@ public class BuildingSpawner : Singleton<BuildingSpawner>
     private void Update()
     {
         if(!_active) { return; }
+
         //removes the building and deactivates
         if (Input.GetMouseButtonDown(1))
         {

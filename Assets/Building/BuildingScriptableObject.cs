@@ -8,5 +8,5 @@ public class BuildingScriptableObject : ScriptableObject
 {
 
     public GameObject buildingPrefab;
-
+    public int cost;
 }

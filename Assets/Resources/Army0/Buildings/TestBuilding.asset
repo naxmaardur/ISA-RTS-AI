@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: TestBuilding
   m_EditorClassIdentifier: 
   buildingPrefab: {fileID: 4484525651665140816, guid: 4c6edda94217e7d4c8c0b7fe5c24a413, type: 3}
+  cost: 1
