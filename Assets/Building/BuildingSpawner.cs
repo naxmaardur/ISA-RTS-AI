@@ -20,10 +20,18 @@ public class BuildingSpawner : Singleton<BuildingSpawner>
     private void Update()
     {
         if(!_active) { return; }
+        //removes the building and deactivates
+        if (Input.GetMouseButtonDown(1))
+        {
+            _active = false;
+            transform.position = new Vector3(0, 600, 0);
+            if (_buildingInstance != null)
+            {
+                Destroy(_buildingInstance);
+            }
+        }
 
-        if(UtiltyFunctions.OverUI()) { return; }
-
-       
+        if (UtiltyFunctions.OverUI()) { return; }
 
         transform.position = UtiltyFunctions.getGridPointOnMap();
 
@@ -36,16 +44,6 @@ public class BuildingSpawner : Singleton<BuildingSpawner>
             _active = false;
             transform.position = new Vector3(0, 600, 0);
             _buildingInstance = null;
-        }
-        //removes the building and deactivates
-        if (Input.GetMouseButtonDown(1))
-        {
-            _active = false;
-            transform.position = new Vector3(0, 600, 0);
-            if (_buildingInstance != null)
-            {
-                Destroy(_buildingInstance);
-            }
         }
     }
 
