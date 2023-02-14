@@ -11,12 +11,14 @@ public class BuildingListUI : MonoBehaviour
     private ArmyAssetList _armyAssets;
     [SerializeField]
     private GameObject _buildingUIButtonPrefab;
+    [SerializeField]
+    private Transform _ContentHolder;
     // Start is called before the first frame update
     void Start()
     {
         _playerArmy = GameMaster.Instance.GetPlayer();
         _armyAssets = _playerArmy != null ? GameMaster.Instance.GetArmyAssetList(_playerArmy.armyID) : null;
-
+        PopulateUI();
     }
 
     //Populates the building buying UI.
@@ -26,6 +28,7 @@ public class BuildingListUI : MonoBehaviour
         foreach (BuildingScriptableObject building in _armyAssets.GetBuildings)
         {
             //add buttons to link building to the mouse.
+            Instantiate(_buildingUIButtonPrefab, _ContentHolder).GetComponent<BuildingUIButton>().building = building;
         }
     }
 
