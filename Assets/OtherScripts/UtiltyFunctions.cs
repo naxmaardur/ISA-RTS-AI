@@ -29,6 +29,20 @@ public static class UtiltyFunctions
         return v3;
     }
 
+    //Check if the mouse is over the map
+    public static bool OverMap()
+    {
+        Vector3 MousePotion = Input.mousePosition;
+        MousePotion.z = 100.0f;
+        MousePotion = Camera.main.ScreenToWorldPoint(MousePotion);
+        if (Physics.Raycast(Camera.main.transform.position, Vector3Direction(Camera.main.transform.position, MousePotion), Mathf.Infinity, GameMaster.Instance.GroundLayer))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     //returns the point of the grid map the mouse is over 
     public static Vector3 getGridPointOnMap(float gridSize = 1)
     {

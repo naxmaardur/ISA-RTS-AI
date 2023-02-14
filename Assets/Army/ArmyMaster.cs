@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class ArmyMaster
 {
     int _team;
@@ -11,18 +12,19 @@ public class ArmyMaster
     private int _money;
 
     public int Money { get { return _money; } }
-
-    private List<BuildingBase> buildings = new();
-    private List<UnitBase> units = new();
+    [SerializeField]
+    private List<BuildingBase> _buildings = new();
+    private List<UnitBase> _units = new();
 
     public delegate void OnMoneyUpdatedEvent(int money);
     public OnMoneyUpdatedEvent OnMoneyUpdated;
 
 
+    public List<BuildingBase> Buildings { get { return _buildings; } }
 
     public void AddBuildingToList(BuildingBase building)
     {
-        buildings.Add(building);
+        _buildings.Add(building);
     }
 
     public void RemoveMoney(int toRemove)
