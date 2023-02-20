@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildingBase : MonoBehaviour
+public class BuildingBase : ArmyActorBase
 {
-    private int _team;
-    private ArmyMaster _army;
-    public BuildingScriptableObject scritableObjectOfThisBuilding;
+    
 
     // Start is called before the first frame update
     void Start()

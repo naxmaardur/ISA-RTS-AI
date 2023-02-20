@@ -132,5 +132,8 @@ public class BuildingSpawner : Singleton<BuildingSpawner>
         _sizeRenderer.localScale = boxCollider.size;
     }
 
-
+    public bool GetIsActive()
+    {
+        return _active;
+    }
 }

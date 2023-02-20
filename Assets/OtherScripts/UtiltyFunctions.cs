@@ -43,6 +43,20 @@ public static class UtiltyFunctions
         return false;
     }
 
+    public static GameObject GetObjectAtMousePoint()
+    {
+        Vector3 MousePotion = Input.mousePosition;
+        MousePotion.z = 100.0f;
+        MousePotion = Camera.main.ScreenToWorldPoint(MousePotion);
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Vector3Direction(Camera.main.transform.position, MousePotion),out hit, Mathf.Infinity))
+        {
+            return hit.collider.gameObject;
+        }
+
+        return null;
+    }
+
     //returns the point of the grid map the mouse is over 
     public static Vector3 getGridPointOnMap(float gridSize = 1)
     {
