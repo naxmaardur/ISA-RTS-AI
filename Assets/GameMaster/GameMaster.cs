@@ -40,6 +40,11 @@ public class GameMaster : Singleton<GameMaster>
         return null;
     }
 
+    public ArmyMaster GetArmyByIndex(int index)
+    {
+        return _armyMasters[index];
+    }
+
     // Update is called once per frame
     void Update()
     {

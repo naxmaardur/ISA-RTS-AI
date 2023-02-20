@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BuildingBase : ArmyActorBase
 {
-    
+    public BuildingScriptableObject scritableObjectOfThisBuilding;
+
 
     // Start is called before the first frame update
     void Start()

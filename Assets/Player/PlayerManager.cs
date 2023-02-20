@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     private int _currentArmyIndex = 0;
 
-    private List<UnitBase> units = new();
+    private List<UnitBase> _units = new();
 
     public int CurrentArmyIndex {get { return _currentArmyIndex; } }
 
@@ -42,7 +42,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            units.Clear();
+            _units.Clear();
             GameObject gameObject = UtiltyFunctions.GetObjectAtMousePoint();
             ArmyActorBase armyActor = gameObject.GetComponent<ArmyActorBase>();
             if(armyActor == null) { return; }
@@ -63,9 +63,11 @@ public class PlayerManager : MonoBehaviour
             Debug.Log("not a building");
             return;
         }
-        if(building.ArmyMaster != GameMaster.Instance.GetPlayer()) { return; }
+        if(building.ArmyMaster != GameMaster.Instance.GetArmyByIndex(_currentArmyIndex)) { return; }
+        if(building.scritableObjectOfThisBuilding.type != 0) { return; }
         //building UI pop up until you click on the back button or click anywhere on the screen that is not UI. the check for that should be in the UI code.
-
+        UnitShopUIlist.Instance.gameObject.SetActive(true);
+        UnitShopUIlist.Instance.SetUI(building);
     }
 
     private void UnitSelection(ArmyActorBase armyActor)
@@ -79,7 +81,8 @@ public class PlayerManager : MonoBehaviour
         {
             return;
         }
-        if (unit.ArmyMaster != GameMaster.Instance.GetPlayer()) { return; }
+        if (unit.ArmyMaster != GameMaster.Instance.GetArmyByIndex(_currentArmyIndex)) { return; }
         //Add unit to the list of unites that should be controled until the player left clicks again.
+        _units.Add(unit);
     }
 }

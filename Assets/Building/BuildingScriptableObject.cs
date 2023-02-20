@@ -6,7 +6,12 @@ using UnityEngine;
 //Contains the information of a building before it is build. 
 public class BuildingScriptableObject : ScriptableObject
 {
-
+    public int type;
+    public int unitConstuctionType;
     public GameObject buildingPrefab;
     public int cost;
+
+    public int health;
+    public int range;
+    public int attack;
 }

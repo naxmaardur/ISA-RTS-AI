@@ -6,5 +6,13 @@ using UnityEngine;
 //Contains the information of a Unit before it is made. 
 public class UnitScritableObject : ScriptableObject
 {
-   
+    public int type;
+    public int cost;
+    public int constructTime;
+    public GameObject unitPrefab;
+
+    public int health;
+    public int speed;
+    public int range;
+    public int attack;
 }

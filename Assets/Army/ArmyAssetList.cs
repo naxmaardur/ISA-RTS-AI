@@ -32,7 +32,7 @@ public class ArmyAssetList
     private void GetUnitsFromResources(int armyID)
     {
         List<UnitScritableObject> units = new();
-        Object[] objects = Resources.LoadAll("Army"+ armyID +"Units", typeof(UnitScritableObject));
+        Object[] objects = Resources.LoadAll("Army"+ armyID +"/Units", typeof(UnitScritableObject));
         foreach (Object o in objects)
         {
             UnitScritableObject b = (UnitScritableObject)o;
@@ -42,6 +42,18 @@ public class ArmyAssetList
     }
 
 
-    
+    public UnitScritableObject[] GetUnitsOfType(int type)
+    {
+
+        List<UnitScritableObject> units = new();
+        foreach(UnitScritableObject unit in this.units)
+        {
+            if(unit.type == type)
+            {
+                units.Add(unit);
+            }
+        }
+        return units.ToArray();
+    }
     
 }

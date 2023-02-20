@@ -7,7 +7,6 @@ public class ArmyActorBase : MonoBehaviour
 
     protected int _team;
     protected ArmyMaster _army;
-    public BuildingScriptableObject scritableObjectOfThisBuilding;
     public ArmyMaster ArmyMaster { get { return _army; } }
     // Start is called before the first frame update
     void Start()
