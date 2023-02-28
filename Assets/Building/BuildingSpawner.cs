@@ -56,6 +56,7 @@ public class BuildingSpawner : Singleton<BuildingSpawner>
             {
                 Destroy(_buildingInstance.gameObject);
             }
+            return;
         }
 
         if (UtiltyFunctions.OverUI()) { _meshRenderer.material = _canNotPlaceMaterial; return; }

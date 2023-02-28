@@ -437,14 +437,14 @@ MonoBehaviour:
       - m_Target: {fileID: 1753133437}
         m_TargetAssemblyTypeName: UnitShopUIlist, Assembly-CSharp
         m_MethodName: clearUI
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &216188721
 MonoBehaviour:
@@ -1262,6 +1262,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _units: []
+  _startpos: {x: 0, y: 0}
+  _endpos: {x: 0, y: 0}
+  selectionBoxImage: {fileID: 10305, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &954185592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,6 +1723,7 @@ MonoBehaviour:
   _unitButtonPrefab: {fileID: 728924984074955069, guid: 286b80ea766fcac47b63835668b22a6f, type: 3}
   _content: {fileID: 1367785429}
   building: {fileID: 0}
+  _canClear: 1
 --- !u!1 &1771134244
 GameObject:
   m_ObjectHideFlags: 0

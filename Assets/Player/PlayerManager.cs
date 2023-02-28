@@ -38,6 +38,10 @@ public class PlayerManager : MonoBehaviour
     {
         if (BuildingSpawner.Instance.GetIsActive()) { return; }
         if (UtiltyFunctions.OverUI()) {
+            if (Input.GetMouseButtonDown(0))
+            {
+                _units.Clear();
+            }
             if (Input.GetMouseButtonUp(0))
             {
                 _startpos = Vector2.zero;
@@ -46,12 +50,23 @@ public class PlayerManager : MonoBehaviour
             return; 
         }
         OnMouseLeft();
-        OnMouseDownRight();
+        OnMouseRight();
     }
 
-    private void OnMouseDownRight()
+    private void OnMouseRight()
     {
-        
+        if (Input.GetMouseButtonDown(1))
+        {
+
+            GameObject gameObject = UtiltyFunctions.GetObjectAtMousePoint();
+            Vector3 point = UtiltyFunctions.getPosition();
+
+            foreach (UnitBase unit in _units)
+            {
+                //Give Unit Right click info
+                unit.GiveOrder(gameObject, point);
+            }
+        }
     }
 
     private void OnMouseLeft()
@@ -95,6 +110,12 @@ public class PlayerManager : MonoBehaviour
         UnitShopUIlist.Instance.gameObject.SetActive(true);
         UnitShopUIlist.Instance.SetUI(building);
     }
+    private IEnumerator BuildingSelectionDelay(BuildingBase building)
+    {
+        yield return new WaitForEndOfFrame();
+
+    }
+
 
     private void UnitSelection(ArmyActorBase armyActor)
     {

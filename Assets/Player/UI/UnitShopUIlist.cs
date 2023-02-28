@@ -12,6 +12,8 @@ public class UnitShopUIlist : Singleton<UnitShopUIlist>
 
     public BuildingBase building;
     private List<GameObject> buttons = new();
+    [SerializeField]
+    private bool _canClear = true; 
 
     // Start is called before the first frame update
     void Awake()
@@ -30,18 +32,34 @@ public class UnitShopUIlist : Singleton<UnitShopUIlist>
         }
     }
 
-    public void clearUI()
+    public void clearUI(bool disable = true)
     {
-        foreach(GameObject button in buttons)
+        if(!_canClear) { return; }
+        foreach (GameObject button in buttons)
         {
             Destroy(button);
         }
         buttons.Clear();
+
+
+        if (!disable) { StartCoroutine(ClearWait()); return; }
+        if (!_canClear) { 
+            return; 
+        }
         gameObject.SetActive(false);
     }
 
+    private IEnumerator ClearWait()
+    {
+        _canClear = false;
+        yield return new WaitForEndOfFrame();
+        _canClear = true;
+    }
+
+
     public void SetUI(BuildingBase building)
     {
+        clearUI(false);
         this.building = building;
         UnitScritableObject[] units = GameMaster.Instance.GetArmyAssetList(building.ArmyMaster.armyID).GetUnitsOfType(building.scritableObjectOfThisBuilding.unitConstuctionType);
         foreach(UnitScritableObject unit in units)

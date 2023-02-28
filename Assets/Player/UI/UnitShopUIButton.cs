@@ -65,7 +65,7 @@ public class UnitShopUIButton : MonoBehaviour, IPointerClickHandler
     public void OnClick()
     {
         //check if we have money and then add the unit to the buildings que
-        if(_building.ArmyMaster.Money > _unit.cost) { return; }
+        if(_building.ArmyMaster.Money < _unit.cost) { return; }
         _building.AddUnitToQueue(_unit);
         UpdateCount(++UnitsUnderConstruction);
         _building.ArmyMaster.RemoveMoney(_unit.cost);
