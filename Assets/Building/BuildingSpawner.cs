@@ -24,6 +24,7 @@ public class BuildingSpawner : Singleton<BuildingSpawner>
     private Material _canNotPlaceMaterial;
     [SerializeField]
     private MeshRenderer _meshRenderer;
+    BoxCollider _instanceBoxCollider;
 
 
     private void Awake()
@@ -82,6 +83,8 @@ public class BuildingSpawner : Singleton<BuildingSpawner>
             //check if not overlapping
             _buildingInstance.transform.position = transform.position;
             _buildingInstance.AddtoMaster(_armyMaster);
+            _buildingInstance.PlacedEvent?.Invoke();
+            _instanceBoxCollider.isTrigger = false;
             _active = false;
             transform.position = new Vector3(0, 600, 0);
             _buildingInstance = null;
@@ -108,12 +111,26 @@ public class BuildingSpawner : Singleton<BuildingSpawner>
     private bool CheckOverlap()
     {
         Collider[] colliders = Physics.OverlapBox(_collider.center+transform.position, _collider.size);
-        foreach(Collider col in colliders)
+        
+        bool CanPlace = false;
+        if (_buildingInstance.scritableObjectOfThisBuilding.type == 1)
         {
-            Debug.Log(col.name);
+            CanPlace = true;
         }
-        if(colliders.Length != 0){ return true;}
-        return false;
+        foreach (Collider col in colliders)
+        {
+            if(col == _collider) { continue; }
+            if (col.tag == "Gold")
+            {
+                if (_buildingInstance.scritableObjectOfThisBuilding.type == 1)
+                {
+                    CanPlace = false;
+                    continue;
+                }
+            }
+            CanPlace = true;
+        }
+        return CanPlace;
     }
 
     public void SetBuilding(BuildingScriptableObject building)
@@ -125,15 +142,19 @@ public class BuildingSpawner : Singleton<BuildingSpawner>
         _active = true;
         //set the preview and size of the trigger.
         _buildingInstance = Instantiate(building.buildingPrefab, new Vector3(0, 600, 0), Quaternion.identity).GetComponent<BuildingBase>();
-        BoxCollider boxCollider = _buildingInstance.GetComponent<BoxCollider>();
-        _collider.size = boxCollider.size / 2.1f;
-        _collider.center = boxCollider.center;
-        _sizeRenderer.localPosition = boxCollider.center;
-        _sizeRenderer.localScale = boxCollider.size;
+        _instanceBoxCollider = _buildingInstance.GetComponent<BoxCollider>();
+        _instanceBoxCollider.isTrigger = true;
+        _collider.size = _instanceBoxCollider.size / 2.1f;
+        _collider.center = _instanceBoxCollider.center;
+        _sizeRenderer.localPosition = _instanceBoxCollider.center;
+        _sizeRenderer.localScale = _instanceBoxCollider.size;
     }
 
     public bool GetIsActive()
     {
         return _active;
     }
+
+
+
 }

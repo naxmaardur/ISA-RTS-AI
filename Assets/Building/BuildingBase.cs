@@ -11,6 +11,8 @@ public class BuildingBase : ArmyActorBase
     private bool _constructionCoroutineIsRunning;
     [SerializeField]
     private Transform SpawnPoint;
+    public delegate void Placed();
+    public Placed PlacedEvent;
 
     // Start is called before the first frame update
     void Start()
