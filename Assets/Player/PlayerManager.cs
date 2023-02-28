@@ -147,7 +147,7 @@ public class PlayerManager : MonoBehaviour
     {
         Vector2 c = new Vector2();
         Vector2 d = new Vector2();
-
+        //Moving the values around so that C is always the closest to 0,0 and D the furdest away.
         c.x = a.x < b.x ? a.x : b.x;
         c.y = a.y < b.y ? a.y : b.y;
         d.x = a.x > b.x ? a.x : b.x;
@@ -161,7 +161,7 @@ public class PlayerManager : MonoBehaviour
     {
         if ( _startpos != Vector2.zero && _endpos != Vector2.zero)
         {
-            GUI.DrawTexture(new Rect(_startpos.x, Screen.height - _startpos.y, _endpos.x - _startpos.x, -1 * ((Screen.height - _startpos.y) - (Screen.height - _endpos.y))), selectionBoxImage);
+            GUI.DrawTexture(new Rect(_startpos.x, Screen.height - _startpos.y, _endpos.x - _startpos.x, -1 * ((Screen.height - _startpos.y) - (Screen.height - _endpos.y))), selectionBoxImage); //https://answers.unity.com/questions/601084/drawing-a-box-with-mouse-dragged-on-screen.html
         }
     }
 
