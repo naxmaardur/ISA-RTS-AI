@@ -5,6 +5,8 @@ using UnityEngine;
 public class BuildingBase : ArmyActorBase
 {
     public BuildingScriptableObject scritableObjectOfThisBuilding;
+    private List<UnitScritableObject> _unitConstructionQueue = new();
+    private List<UnitShopUIButton> _buttons = new();
 
 
     // Start is called before the first frame update
@@ -31,4 +33,50 @@ public class BuildingBase : ArmyActorBase
         armyMaster.AddBuildingToList(this);
         _army = armyMaster;
     }
+
+
+    public void SubToUIElement(UnitShopUIButton unitShopUIButton)
+    {
+        _buttons.Add(unitShopUIButton);
+    }
+
+    public void RemoveSubToUIElement(UnitShopUIButton unitShopUIButton)
+    {
+        _buttons.Remove(unitShopUIButton);
+    }
+
+
+    public int GetQueueCountOfUnit(UnitScritableObject unit)
+    {
+        int count = 0;
+        foreach(UnitScritableObject unitScritable in _unitConstructionQueue)
+        {
+            if(unitScritable == unit) { count++; }
+        }
+        return count;
+    }
+
+    private void UpdateAllCounts()
+    {
+        foreach(UnitShopUIButton button in _buttons)
+        {
+            button.UpdateCount(GetQueueCountOfUnit(button.Unit));
+        }
+    }
+
+
+
+    public void AddUnitToQueue(UnitScritableObject unitScritable)
+    {
+        _unitConstructionQueue.Add(unitScritable);
+    }
+
+
+    public void RemoveFromQueue(UnitScritableObject unitScritable)
+    {
+        _unitConstructionQueue.Remove(unitScritable);
+    }
+
+
+
 }
