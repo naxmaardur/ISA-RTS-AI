@@ -6,7 +6,16 @@ public class PlayerManager : MonoBehaviour
 {
     private int _currentArmyIndex = 0;
 
+    [SerializeField]
     private List<UnitBase> _units = new();
+    [SerializeField]
+    Vector2 _startpos;                                                                  //the starting position of a selection rect
+    [SerializeField]
+    Vector2 _endpos;                                                                    //the end position of a selection rect
+
+    [SerializeField]
+    private Texture selectionBoxImage;
+
 
     public int CurrentArmyIndex {get { return _currentArmyIndex; } }
 
@@ -28,8 +37,15 @@ public class PlayerManager : MonoBehaviour
     void OnMouseUpdates()
     {
         if (BuildingSpawner.Instance.GetIsActive()) { return; }
-        if (UtiltyFunctions.OverUI()) { return; }
-        OnMouseDownLeft();
+        if (UtiltyFunctions.OverUI()) {
+            if (Input.GetMouseButtonUp(0))
+            {
+                _startpos = Vector2.zero;
+                _endpos = Vector2.zero;
+            }
+            return; 
+        }
+        OnMouseLeft();
         OnMouseDownRight();
     }
 
@@ -38,16 +54,26 @@ public class PlayerManager : MonoBehaviour
         
     }
 
-    private void OnMouseDownLeft()
+    private void OnMouseLeft()
     {
         if (Input.GetMouseButtonDown(0))
         {
             _units.Clear();
+            _startpos = Input.mousePosition;
             GameObject gameObject = UtiltyFunctions.GetObjectAtMousePoint();
             ArmyActorBase armyActor = gameObject.GetComponent<ArmyActorBase>();
             if(armyActor == null) { return; }
-            BuildingSelection(armyActor);
             UnitSelection(armyActor);
+
+            BuildingSelection(armyActor);
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            getSelection();
+        }
+        if (Input.GetMouseButton(0))
+        {
+            _endpos = Input.mousePosition;
         }
     }
 
@@ -85,4 +111,58 @@ public class PlayerManager : MonoBehaviour
         //Add unit to the list of unites that should be controled until the player left clicks again.
         _units.Add(unit);
     }
+
+
+
+    //makes a sellection between start and end pos and then add all units(that belong to the player) in that sellection to the units to give commands
+    void getSelection()
+    {
+        Vector3 endpos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        Vector3 startpos = Camera.main.ScreenToViewportPoint(_startpos);
+        if (endpos == startpos) {
+            _startpos = Vector2.zero;
+            _endpos = Vector2.zero;
+
+            return; }
+
+
+        //vind the point closest to 0,0
+        //calculate the size of the rectangle
+        Rect r = CalcualteRectange(startpos,endpos);
+
+        UnitBase[] controllers = GameObject.FindObjectsOfType<UnitBase>();
+
+        foreach (UnitBase u in controllers)
+        {
+            if (!r.Contains(Camera.main.WorldToViewportPoint(u.transform.position))) { continue; }
+            if (u.ArmyMaster != GameMaster.Instance.GetArmyByIndex(_currentArmyIndex)) { continue; }
+            if (_units.Contains(u)) { continue; }
+            _units.Add(u);
+        }
+        _startpos = Vector2.zero;
+        _endpos = Vector2.zero;
+    }
+
+    private Rect CalcualteRectange(Vector2 a,Vector2 b)
+    {
+        Vector2 c = new Vector2();
+        Vector2 d = new Vector2();
+
+        c.x = a.x < b.x ? a.x : b.x;
+        c.y = a.y < b.y ? a.y : b.y;
+        d.x = a.x > b.x ? a.x : b.x;
+        d.y = a.y > b.y ? a.y : b.y;
+
+        return new Rect(c.x, c.y, d.x - c.x, d.y - c.y);
+    }
+
+
+    void OnGUI()
+    {
+        if ( _startpos != Vector2.zero && _endpos != Vector2.zero)
+        {
+            GUI.DrawTexture(new Rect(_startpos.x, Screen.height - _startpos.y, _endpos.x - _startpos.x, -1 * ((Screen.height - _startpos.y) - (Screen.height - _endpos.y))), selectionBoxImage);
+        }
+    }
+
 }

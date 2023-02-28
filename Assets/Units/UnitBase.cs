@@ -18,6 +18,6 @@ public class UnitBase : ArmyActorBase
 
     public void SetArmy(ArmyMaster armyMaster)
     {
-
+        _army = armyMaster;
     }
 }

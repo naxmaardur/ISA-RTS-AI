@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95380fd83ba02d74e9305f7144d7e31a, type: 3}
-  m_Name: TestBuilding
+  m_Name: InfantryTrainingCamp
   m_EditorClassIdentifier: 
   buildingPrefab: {fileID: 4484525651665140816, guid: 4c6edda94217e7d4c8c0b7fe5c24a413, type: 3}
   cost: 0

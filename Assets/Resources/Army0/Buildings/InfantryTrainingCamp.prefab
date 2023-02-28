@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 1553587133788080902}
   - component: {fileID: 5884547014857193972}
   m_Layer: 0
-  m_Name: testCube
+  m_Name: InfantryTrainingCamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
