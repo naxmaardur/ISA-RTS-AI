@@ -110,11 +110,6 @@ public class PlayerManager : MonoBehaviour
         UnitShopUIlist.Instance.gameObject.SetActive(true);
         UnitShopUIlist.Instance.SetUI(building);
     }
-    private IEnumerator BuildingSelectionDelay(BuildingBase building)
-    {
-        yield return new WaitForEndOfFrame();
-
-    }
 
 
     private void UnitSelection(ArmyActorBase armyActor)
