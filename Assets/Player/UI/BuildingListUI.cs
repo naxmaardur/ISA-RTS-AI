@@ -28,7 +28,7 @@ public class BuildingListUI : MonoBehaviour
         foreach (BuildingScriptableObject building in _armyAssets.GetBuildings)
         {
             //add buttons to link building to the mouse.
-            Instantiate(_buildingUIButtonPrefab, _ContentHolder).GetComponent<BuildingUIButton>().building = building;
+            Instantiate(_buildingUIButtonPrefab, _ContentHolder).GetComponent<BuildingUIButton>().AssignBuildingToButton(building);
         }
     }
 

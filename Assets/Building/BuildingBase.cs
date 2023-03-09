@@ -13,6 +13,7 @@ public class BuildingBase : ArmyActorBase
     private Transform SpawnPoint;
     public delegate void Placed();
     public Placed PlacedEvent;
+    public int UnitQueueLength { get { return _unitConstructionQueue.Count; } }
 
     // Start is called before the first frame update
     void Start()
