@@ -28,7 +28,14 @@ public class TacticalAIManager
     {
         _army = army;
         _armyAssets = armyAssets;
+        _army.OnActorDestroyed += OnActorDestroyed;
     }
+    
+    private void OnActorDestroyed(ArmyActorBase actor)
+    {
+
+    }
+
 
     private void AddBuildingToCorrectList(BuildingBase building)
     {
@@ -52,6 +59,7 @@ public class TacticalAIManager
         BuildingBase buildingInstance = buildingObject.GetComponent<BuildingBase>();
         buildingInstance.AddtoMaster(_army);
         buildingInstance.PlacedEvent?.Invoke();
+        buildingInstance.Health = building.health;
         _army.RemoveMoney(buildingInstance.scritableObjectOfThisBuilding.cost);
         AddBuildingToCorrectList(buildingInstance);
     }

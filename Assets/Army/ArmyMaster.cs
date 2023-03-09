@@ -19,6 +19,9 @@ public class ArmyMaster
     public delegate void OnMoneyUpdatedEvent(int money);
     public OnMoneyUpdatedEvent OnMoneyUpdated;
 
+    public delegate void OnActorDestroyedEvent(ArmyActorBase actor);
+    public OnActorDestroyedEvent OnActorDestroyed;
+
 
     public List<BuildingBase> Buildings { get { return _buildings; } }
 

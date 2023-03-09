@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4701571921725306545}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 9100025774477452035}
   - component: {fileID: 1831241331722532886}
   - component: {fileID: 6447978838059652239}
+  - component: {fileID: 3560979582066274923}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -130,7 +131,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &6447978838059652239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,3 +144,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f73a58fd9da2f84b906ef24d731b657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitScritable: {fileID: 0}
+  pathDestination: {x: 0, y: 0, z: 0}
+--- !u!195 &3560979582066274923
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6395610220893925317}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
