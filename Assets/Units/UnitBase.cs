@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class UnitBase : ArmyActorBase
     private ArmyActorBase _target;
     public UnitScritableObject unitScritable;
     public Vector3 pathDestination;
+    private UnitFormation _formationParent;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,12 @@ public class UnitBase : ArmyActorBase
         }
 
         TryAttackTarget();
+    }
+
+    //sets the units prefed transform position to the given transform
+    public void SetTransformDestination(Transform transform)
+    {
+        throw new NotImplementedException();
     }
 
     private void TryAttackTarget()
@@ -88,6 +97,11 @@ public class UnitBase : ArmyActorBase
     }
 
 
+
+    private void OnDestroy()
+    {
+        _formationParent.RemoveUnit(this);
+    }
 
 
 }

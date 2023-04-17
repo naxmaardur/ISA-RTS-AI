@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ArmyActorBase : MonoBehaviour
 {
-
+    [SerializeField]
+    protected UtilityAI.AIBrain aIBrain;
     protected int _team;
     protected ArmyMaster _army;
     public ArmyMaster ArmyMaster { get { return _army; } }
