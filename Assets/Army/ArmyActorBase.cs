@@ -13,6 +13,12 @@ public class ArmyActorBase : MonoBehaviour
     protected float _health;
     public float Health { get { return _health; } set { _health = Mathf.Clamp(value, 0, 5000); } }
 
+
+    private void Awake()
+    {
+        aIBrain.SetNPC(this);
+    }
+
     public virtual void DealDamage(float damage)
     {
         Health -= damage;

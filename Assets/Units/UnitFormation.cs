@@ -39,10 +39,19 @@ public class UnitFormation : MonoBehaviour
     }
 
 
+    private void InitFormation()
+    {
+        foreach (UnitBase unit in units)
+        {
+            unit.SetFormation(this);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        InitFormation();
+        UpdateFormation();
     }
 
     // Update is called once per frame

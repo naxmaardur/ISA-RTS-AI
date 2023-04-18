@@ -11,13 +11,20 @@ namespace UtilityAI.Actions
     {
         public override void Execute(ArmyActorBase npc)
         {
+            //execute move to location on 
+
+            UnitBase unit = (UnitBase)npc;
+            unit.StartCoroutine(unit.ExecuteMoveTo());
+
+
+
             //npc.DoWork(3);
         }
 
         public override void SetRequiredDestination(ArmyActorBase npc)
         {
             float distance = Mathf.Infinity;
-            Transform nearestResource = null;
+            //Transform nearestResource = null;
 
             /*List<Transform> resources = npc.context.Destinations[DestinationType.resource];
             foreach (Transform resource in resources)
@@ -30,7 +37,7 @@ namespace UtilityAI.Actions
                 }
             }*/
 
-            RequiredDestination = nearestResource;
+           // RequiredDestination = nearestResource;
             //npc.mover.destination = RequiredDestination;
         }
     }

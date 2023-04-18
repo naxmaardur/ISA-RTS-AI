@@ -40,8 +40,8 @@ namespace UtilityAI.Considerations
 
         private float GetDistanceFromDestination(ArmyActorBase npc)
         {
-            return 0;
-            //return Vector3.Distance(npc.transform.position, npc.mover.destination.position);
+            UnitBase unit = (UnitBase)npc;
+            return Vector3.Distance(npc.transform.position, unit.GetDestination());
         }
     }
 }

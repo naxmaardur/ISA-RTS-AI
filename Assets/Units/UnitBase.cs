@@ -11,12 +11,14 @@ public class UnitBase : ArmyActorBase
     public UnitScritableObject unitScritable;
     public Vector3 pathDestination;
     private UnitFormation _formationParent;
+    private Transform _formationTransform;
 
 
     // Start is called before the first frame update
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        aIBrain.DecideBestAction();
     }
 
     // Update is called once per frame
@@ -35,7 +37,12 @@ public class UnitBase : ArmyActorBase
     //sets the units prefed transform position to the given transform
     public void SetTransformDestination(Transform transform)
     {
-        throw new NotImplementedException();
+        _formationTransform = transform;
+    }
+
+    public void SetFormation(UnitFormation unitFormation)
+    {
+        _formationParent = unitFormation;
     }
 
     private void TryAttackTarget()
@@ -96,7 +103,26 @@ public class UnitBase : ArmyActorBase
         _navMeshAgent.SetDestination(position);
     }
 
+    public Vector3 GetDestination()
+    {
+        if(pathDestination != Vector3.zero)
+        {
+            return pathDestination;
+        }
+        if(_formationParent != null)
+        {
+            return _formationTransform.position;
+        }
 
+        return Vector3.zero;
+    }
+
+
+    public IEnumerator ExecuteMoveTo()
+    {
+        MakePathToPosition(GetDestination());
+        yield return null;
+    }
 
     private void OnDestroy()
     {

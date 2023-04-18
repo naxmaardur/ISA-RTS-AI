@@ -22,6 +22,11 @@ namespace UtilityAI
             finishedExecutingBestAction = false;
         }
 
+        public void SetNPC(ArmyActorBase npc)
+        {
+            this.npc = npc;
+        }
+
         // Loop through all the available actions 
         // Give me the highest scoring action
         public void DecideBestAction()
@@ -41,6 +46,7 @@ namespace UtilityAI
 
             bestAction = actionsAvailable[nextBestActionIndex];
             bestAction.SetRequiredDestination(npc);
+            bestAction.Execute(npc);
 
             finishedDeciding = true;
         }
