@@ -10,7 +10,9 @@ public class UnitBase : ArmyActorBase
     private ArmyActorBase _target;
     public UnitScritableObject unitScritable;
     public Vector3 pathDestination;
+    [SerializeField]
     private UnitFormation _formationParent;
+    [SerializeField]
     private Transform _formationTransform;
 
 
@@ -18,6 +20,8 @@ public class UnitBase : ArmyActorBase
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        Grid.Instance.AddEntityToALLMaps(this);
+        //for testing
         aIBrain.DecideBestAction();
     }
 
@@ -32,6 +36,8 @@ public class UnitBase : ArmyActorBase
         }
 
         TryAttackTarget();
+        SetNewGridPosition();
+        aIBrain.DecideBestAction();
     }
 
     //sets the units prefed transform position to the given transform
@@ -63,6 +69,7 @@ public class UnitBase : ArmyActorBase
     public void SetArmy(ArmyMaster armyMaster)
     {
         _army = armyMaster;
+        Grid.Instance.AddEntityToALLMaps(this);
     }
 
 
@@ -87,6 +94,7 @@ public class UnitBase : ArmyActorBase
                 return;
             }
             MakePathToPosition(position);
+            pathDestination = position;
         }
     }
 
@@ -99,7 +107,7 @@ public class UnitBase : ArmyActorBase
 
     public void MakePathToPosition(Vector3 position)
     {
-        pathDestination = position;
+        //pathDestination = position;
         _navMeshAgent.SetDestination(position);
     }
 
@@ -114,7 +122,7 @@ public class UnitBase : ArmyActorBase
             return _formationTransform.position;
         }
 
-        return Vector3.zero;
+        return transform.position;
     }
 
 
@@ -126,7 +134,8 @@ public class UnitBase : ArmyActorBase
 
     private void OnDestroy()
     {
-        _formationParent.RemoveUnit(this);
+        if (_formationParent != null) { _formationParent.RemoveUnit(this); }
+        Grid.Instance.RemoveEntityFromALLMaps(this);
     }
 
 

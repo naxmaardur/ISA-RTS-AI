@@ -44,8 +44,15 @@ public class BuildingBase : ArmyActorBase
         armyMaster.RemoveMoney(scritableObjectOfThisBuilding.cost);
         armyMaster.AddBuildingToList(this);
         _army = armyMaster;
+        Grid.Instance.AddEntityToALLMaps(this);
+        SetNewGridPosition();
     }
 
+
+    private void OnDisable()
+    {
+        Grid.Instance.RemoveEntityFromALLMaps(this);
+    }
 
     public void SubToUIElement(UnitShopUIButton unitShopUIButton)
     {
