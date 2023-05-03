@@ -28,6 +28,7 @@ public interface IPropagator
 {
 	Vector2I GridPosition { get; }
 	float InfluenceValue { get; }
+	float ArmyInfluenceValue { get; }
 }
 
 public class InfluenceMap : GridData
@@ -99,7 +100,7 @@ public class InfluenceMap : GridData
 
 	void UpdateEntities()
     {
-		foreach(ArmyActorBase entity in _entities)
+		foreach(IPropagator entity in _entities)
         {
 			SetInfluence(entity.GridPosition.x, entity.GridPosition.y, entity.InfluenceValue);
         }

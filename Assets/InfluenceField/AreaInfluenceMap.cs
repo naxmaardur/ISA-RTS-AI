@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-
 public class AreaInfluenceMap
 {
 	//list of entities that can chance the influenceMap
@@ -34,14 +31,16 @@ public class AreaInfluenceMap
 	}
 
 	//changes the value of a grit position
-	public void SetInfluence(int x, int y, float value)
+	public void SetInfluence(float[] values, bool[] updated)
 	{
-		if (Grid.Instance.GridArray[x, y].NodeArea == null) { return;}
-		int id = Grid.Instance.GridArray[x, y].NodeArea.ID;
-
-		//we need to add all entites in the zone together not just set it to one enity's value
-			_influences[id].ArmyStrength = value;
-			_influencesBuffer[id] = value;
+		for(int i = 0; i< values.Length; i++)
+        {
+            if (updated[i])
+            {
+				_influences[i].ArmyStrength = values[i];
+				_influencesBuffer[i] = values[i];
+			}
+        }
 	}
 
 
@@ -56,7 +55,7 @@ public class AreaInfluenceMap
 		_entities.Remove(p);
 	}
 
-
+	//this should happen once per second
 	public void UpdateField()
     {
 		UpdateEntities();
@@ -66,10 +65,19 @@ public class AreaInfluenceMap
 
 	void UpdateEntities()
     {
-		foreach(ArmyActorBase entity in _entities)
+
+		float[] areas = new float[_influences.Length];
+		bool[] updated = new bool[_influences.Length];
+		//adds all enities in a area together to one value for the area
+		foreach(IPropagator entity in _entities)
         {
-			SetInfluence(entity.GridPosition.x, entity.GridPosition.y, entity.InfluenceValue);
-        }
+			if (Grid.Instance.GridArray[entity.GridPosition.x, entity.GridPosition.y].NodeArea == null) { return; }
+			int id = Grid.Instance.GridArray[entity.GridPosition.x, entity.GridPosition.y].NodeArea.ID;
+
+			areas[id] += entity.ArmyInfluenceValue;
+			updated[id] = true;
+		}
+		SetInfluence(areas, updated);
     }
 
 	//Speadring the values over the grid

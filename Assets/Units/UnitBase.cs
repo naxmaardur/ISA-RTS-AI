@@ -69,6 +69,11 @@ public class UnitBase : ArmyActorBase
     public void SetArmy(ArmyMaster armyMaster)
     {
         _army = armyMaster;
+        if (!armyMaster.IsPlayer)
+        {
+            influenceValue = -influenceValue;
+            armyInfluenceValue = -armyInfluenceValue;
+        }
         Grid.Instance.AddEntityToALLMaps(this);
     }
 

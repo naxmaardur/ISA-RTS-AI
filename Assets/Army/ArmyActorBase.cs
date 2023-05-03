@@ -17,9 +17,14 @@ public class ArmyActorBase : MonoBehaviour, IPropagator
     public Vector2I GridPosition { get { return _gridPosition; } }
 
     [SerializeField]
-    private float influenceValue = 5;
+    protected float influenceValue = 5;
 
     public float InfluenceValue { get { return influenceValue; } }
+
+    [SerializeField]
+    protected float armyInfluenceValue = 1;
+
+    public float ArmyInfluenceValue { get { return armyInfluenceValue; } }
 
     private void Awake()
     {
