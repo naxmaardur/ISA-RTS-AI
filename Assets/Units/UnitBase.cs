@@ -8,12 +8,16 @@ public class UnitBase : ArmyActorBase
 {
     private NavMeshAgent _navMeshAgent;
     private ArmyActorBase _target;
+    public ArmyActorBase Target { get { return _target; } }
     public UnitScritableObject unitScritable;
     public Vector3 pathDestination;
     [SerializeField]
     private UnitFormation _formationParent;
     [SerializeField]
     private Transform _formationTransform;
+
+    private List<ArmyActorBase> _actorsInRange = new();
+    public List<ArmyActorBase> ActosInRange { get { return _actorsInRange; } }
 
 
     // Start is called before the first frame update
@@ -134,6 +138,18 @@ public class UnitBase : ArmyActorBase
     public IEnumerator ExecuteMoveTo()
     {
         MakePathToPosition(GetDestination());
+        yield return null;
+    }
+
+    public IEnumerator FollowTarget()
+    {
+        //MakePathToPosition(GetDestination());
+        yield return null;
+    }
+
+    public IEnumerator FleeArea()
+    {
+        //MakePathToPosition(GetDestination());
         yield return null;
     }
 

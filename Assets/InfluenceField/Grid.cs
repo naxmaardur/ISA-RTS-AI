@@ -65,7 +65,7 @@ public class Grid: SingletonNoMonoBehavior<Grid>
         CreateGrid();
         HighLevelinfluenceMap = new InfluenceMap(width,height, 0.3f, 0.3f);
         LowLevelinfluenceMap = new InfluenceMap(width, height, 0.7f, 1);
-        AreaInfluenceMap = new AreaInfluenceMap(_areas, 0.3f, 0.3f);
+        AreaInfluenceMap = new AreaInfluenceMap(_areas, 0.3f, 1);
     }
 
     //creates a new node for each position of the grid and checks its collisions
@@ -122,10 +122,7 @@ public class Grid: SingletonNoMonoBehavior<Grid>
                 nodeAreas.Add(TempNodeArea);
             }
         }
-
-        NodeAreaValidate(nodeAreas);
-       
-        
+        NodeAreaValidate(nodeAreas);   
     }
 
     // potential rewrite, Defide the whole grid in 20X20 areas, Remove disconedted areas from the area and then add those to temp areas.
@@ -275,7 +272,25 @@ public class Grid: SingletonNoMonoBehavior<Grid>
         {
             nodeAreas.Remove(area);
         }
+        //setting center
+        foreach (NodeArea nodeArea in nodeAreas)
+        {
+            Vector3 closestToZero = Vector3.positiveInfinity;
+            Vector3 furthestFromZero = Vector3.zero;
 
+            foreach (Node n in nodeArea.Nodes)
+            {
+                if (Vector3.Distance(Vector3.zero, n._worldPoint) < Vector3.Distance(Vector3.zero, closestToZero))
+                {
+                    closestToZero = n._worldPoint;
+                }
+                if (Vector3.Distance(Vector3.zero, n._worldPoint) > Vector3.Distance(Vector3.zero, furthestFromZero))
+                {
+                    furthestFromZero = n._worldPoint;
+                }
+            }
+            nodeArea.SetCenter(closestToZero + (furthestFromZero - closestToZero) / 2);
+        }
         FindAreaNeighbors(nodeAreas);
     }
 
@@ -315,13 +330,15 @@ public class Grid: SingletonNoMonoBehavior<Grid>
 
     public Node NodeFromWorldPoint(Vector3 worldPosition)
     {
-        float percentX = (worldPosition.x - Center.x + gridWorldSize.x / 2) / gridWorldSize.x;
+        /*float percentX = (worldPosition.x - Center.x + gridWorldSize.x / 2) / gridWorldSize.x;
         float percentY = (worldPosition.z - Center.z + gridWorldSize.y / 2) / gridWorldSize.y;
         percentX = Mathf.Clamp01(percentX);
-        percentY = Mathf.Clamp01(percentY);
+        percentY = Mathf.Clamp01(percentY);*/
 
-        int x = Mathf.RoundToInt((gridSizeX - 1) * percentX);
-        int y = Mathf.RoundToInt((gridSizeY - 1) * percentY);
+        /*int x = Mathf.RoundToInt((gridSizeX - 1) * percentX);
+        int y = Mathf.RoundToInt((gridSizeY - 1) * percentY);*/
+        int x = Mathf.RoundToInt(worldPosition.x);
+        int y = Mathf.RoundToInt(worldPosition.z);
         return grid[x, y];
     }
 
@@ -387,9 +404,31 @@ public class Grid: SingletonNoMonoBehavior<Grid>
 
     public void Update()
     {
-        HighLevelinfluenceMap.UpdateField(this);
-        LowLevelinfluenceMap.UpdateField(this);
-        AreaInfluenceMap.UpdateField();
+        
+    }
+
+    IEnumerator InfluenceMapUpdate()
+    {
+        while (true) {
+            HighLevelinfluenceMap.UpdateField(this);
+            LowLevelinfluenceMap.UpdateField(this);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    IEnumerator InfluenceAreaMapUpdate()
+    {
+        while (true)
+        {
+            AreaInfluenceMap.UpdateField();
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    public void SetupCorotines(GameMaster gameMaster)
+    {
+        gameMaster.StartCoroutine(InfluenceMapUpdate());
+        gameMaster.StartCoroutine(InfluenceAreaMapUpdate());
     }
 
 }

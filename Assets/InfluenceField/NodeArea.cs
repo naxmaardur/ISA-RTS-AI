@@ -7,6 +7,8 @@ public class NodeArea
     int _id;
     public int ID { get { return _id; } }
     Node[] _nodes;
+    Vector3 _center;
+    public Vector3 Center { get { return _center; } }
 
     public float ArmyStrength;
 
@@ -32,5 +34,10 @@ public class NodeArea
     public void SetID(int id)
     {
         _id = id;
+    }
+
+    public void SetCenter(Vector3 center)
+    {
+        _center = center;
     }
 }

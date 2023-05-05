@@ -6,23 +6,16 @@ using UnityEngine;
 
 namespace UtilityAI.Considerations
 {
-    [CreateAssetMenu(fileName = "ShouldIAttackEnemy", menuName = "UtilityAI/Considerations/Am I At Destination")]
-    public class ShouldIAttackEnemy : Consideration
+    [CreateAssetMenu(fileName = "ShouldIFleeArea", menuName = "UtilityAI/Considerations/Should I Flee Area")]
+    public class ShouldIFleeArea : Consideration
     {
         [SerializeField] private AnimationCurve _responseCurve;
 
         public override float ScoreConsideration(ArmyActorBase npc)
         {
-            UnitBase unit = (UnitBase)npc;
-            UnitScritableObject unitObject = unit.unitScritable;
-
-
-            
-
-
             //get node area actor is in
             NodeArea Currentarea = Grid.Instance.GridArray[npc.GridPosition.x, npc.GridPosition.y].NodeArea;
-            float highestValue = Currentarea.ArmyStrength;
+            float highestValue = 0;
             float LowestValue = 0;
             foreach (NodeArea nodeArea in Currentarea.Neigbors)
             {
@@ -34,11 +27,28 @@ namespace UtilityAI.Considerations
                 score = 0;
                 return score;
             }
+            if (highestValue == 0)
+            {
+                score = _responseCurve.Evaluate(4); ;
+                return score;
+            }
 
-            float value = Mathf.Abs(LowestValue) / highestValue;
+            if(MathF.Abs(LowestValue) < 0.1f)
+            {
+                LowestValue = 0.1f;
+            }
+            if(highestValue < 0.1f)
+            {
+                highestValue = 0.1f;
+            }
+
+            float value =  Mathf.Abs(LowestValue) / highestValue;
+
+            value = value / 3;
 
 
             score = _responseCurve.Evaluate(value);
+            Debug.Log(value + " = " + score);
             return score;
         }
     }

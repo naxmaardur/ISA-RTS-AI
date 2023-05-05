@@ -36,6 +36,7 @@ public class GameMaster : Singleton<GameMaster>
         _enemyAi[0].SetUpAIApponent(_armyMasters[1], _armyAssets[0]);
         //}
         grid = Grid.Instance;
+        grid.SetupCorotines(this);
     }
 
     //find the players army in the list of all armies
@@ -60,7 +61,7 @@ public class GameMaster : Singleton<GameMaster>
         {
             tacticalAI.Update();
         }
-        grid.Update();
+        
     }
 
 
@@ -88,26 +89,5 @@ public class GameMaster : Singleton<GameMaster>
     }
 
 
-    private void OnDrawGizmos()
-    {
-        if(Grid.Instance == null) { return; }
-        if(Grid.Instance.Areas == null) { return; }
-        int height = 0;
-        foreach(NodeArea area in Grid.Instance.Areas)
-        {
-            height++;
-            if(area.ArmyStrength == 0) { continue; }
-            if(area.ArmyStrength > 0)
-            {
-                Gizmos.color = new Color(1, 0, 0, 1 * area.ArmyStrength);
-            }else
-            {
-                Gizmos.color = new Color(0, 0, 1, 1 * Mathf.Abs(area.ArmyStrength));
-            }
-            foreach (Node n in area.Nodes)
-            {
-                Gizmos.DrawCube(n._worldPoint + (Vector3.up * height), new Vector3(0.9f, 0.9f, 0.9f));
-            }
-        }
-    }
+    
 }
