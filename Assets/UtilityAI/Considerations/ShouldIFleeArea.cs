@@ -16,12 +16,37 @@ namespace UtilityAI.Considerations
         {
             //get node area actor is in
             NodeArea Currentarea = Grid.Instance.GridArray[npc.GridPosition.x, npc.GridPosition.y].NodeArea;
-            float highestValue = 0;
+            float highestValue = Mathf.NegativeInfinity;
             float LowestValue = 0;
             foreach (NodeArea nodeArea in Currentarea.Neigbors)
             {
                 if (nodeArea.ArmyStrength > highestValue) { highestValue = nodeArea.ArmyStrength; }
                 if (nodeArea.ArmyStrength < LowestValue) { LowestValue = nodeArea.ArmyStrength; }
+            }
+
+            if (highestValue < 0) 
+            {
+                if (_invertResponse)
+                {
+                    score = 0;
+                }
+                else
+                {
+                    score = 1;
+                }
+                return score;
+            }
+            if (highestValue == 0)
+            {
+                if (_invertResponse)
+                {
+                    score = 1;
+                }
+                else
+                {
+                    score = 0;
+                }
+                return score;
             }
             if (Mathf.Abs(LowestValue) < highestValue)
             {
@@ -31,18 +56,6 @@ namespace UtilityAI.Considerations
                 else
                 {
                     score = 0;
-                }
-                return score;
-            }
-            if (highestValue == 0)
-            {
-                if (_invertResponse)
-                {
-                    score = 0;
-                }
-                else
-                {
-                    score = 1;
                 }
                 return score;
             }
@@ -64,7 +77,7 @@ namespace UtilityAI.Considerations
             score = _responseCurve.Evaluate(value);
             if (_invertResponse)
             {
-                value = 1 - value;
+                score = 1 - score;
             }
             return score;
         }

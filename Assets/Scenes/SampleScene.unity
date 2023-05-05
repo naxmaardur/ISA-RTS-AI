@@ -218,6 +218,14 @@ PrefabInstance:
       value: Capsule
       objectReference: {fileID: 0}
     - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
+      propertyPath: _health
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
+      propertyPath: _MaxHealth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
       propertyPath: unitScritable
       value: 
       objectReference: {fileID: 11400000, guid: 3ad9baf3096e1714f8165141f15ca74a, type: 2}
@@ -231,12 +239,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
       propertyPath: aIBrain.actionsAvailable.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
       propertyPath: aIBrain.actionsAvailable.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 3b38b58cc4af7974ca81e1c3f200fb1b, type: 2}
+      objectReference: {fileID: 11400000, guid: ad92efb4e5c7b424c98f02d6231a35cc, type: 2}
     - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
       propertyPath: aIBrain.actionsAvailable.Array.data[1]
       value: 
@@ -245,6 +253,10 @@ PrefabInstance:
       propertyPath: aIBrain.actionsAvailable.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 207b4cee2e87246419d06852805ce520, type: 2}
+    - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
+      propertyPath: aIBrain.actionsAvailable.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b38b58cc4af7974ca81e1c3f200fb1b, type: 2}
     - target: {fileID: 9100025774477452035, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -657,6 +669,14 @@ PrefabInstance:
       value: Capsule (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
+      propertyPath: _health
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
+      propertyPath: _MaxHealth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
       propertyPath: unitScritable
       value: 
       objectReference: {fileID: 11400000, guid: 3ad9baf3096e1714f8165141f15ca74a, type: 2}
@@ -670,12 +690,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
       propertyPath: aIBrain.actionsAvailable.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
       propertyPath: aIBrain.actionsAvailable.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 3b38b58cc4af7974ca81e1c3f200fb1b, type: 2}
+      objectReference: {fileID: 11400000, guid: ad92efb4e5c7b424c98f02d6231a35cc, type: 2}
     - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
       propertyPath: aIBrain.actionsAvailable.Array.data[1]
       value: 
@@ -684,6 +704,10 @@ PrefabInstance:
       propertyPath: aIBrain.actionsAvailable.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 207b4cee2e87246419d06852805ce520, type: 2}
+    - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
+      propertyPath: aIBrain.actionsAvailable.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b38b58cc4af7974ca81e1c3f200fb1b, type: 2}
     - target: {fileID: 9100025774477452035, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -2073,6 +2097,14 @@ PrefabInstance:
       value: Capsule (2)
       objectReference: {fileID: 0}
     - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
+      propertyPath: _health
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
+      propertyPath: _MaxHealth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
       propertyPath: unitScritable
       value: 
       objectReference: {fileID: 11400000, guid: 3ad9baf3096e1714f8165141f15ca74a, type: 2}
@@ -2086,12 +2118,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
       propertyPath: aIBrain.actionsAvailable.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
       propertyPath: aIBrain.actionsAvailable.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 3b38b58cc4af7974ca81e1c3f200fb1b, type: 2}
+      objectReference: {fileID: 11400000, guid: ad92efb4e5c7b424c98f02d6231a35cc, type: 2}
     - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
       propertyPath: aIBrain.actionsAvailable.Array.data[1]
       value: 
@@ -2100,6 +2132,10 @@ PrefabInstance:
       propertyPath: aIBrain.actionsAvailable.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 207b4cee2e87246419d06852805ce520, type: 2}
+    - target: {fileID: 6447978838059652239, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
+      propertyPath: aIBrain.actionsAvailable.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b38b58cc4af7974ca81e1c3f200fb1b, type: 2}
     - target: {fileID: 9100025774477452035, guid: 625be1e02988c0f4fadc35c49e60d534, type: 3}
       propertyPath: m_RootOrder
       value: 1

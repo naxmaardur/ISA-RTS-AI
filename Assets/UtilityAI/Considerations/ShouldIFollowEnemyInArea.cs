@@ -34,6 +34,18 @@ namespace UtilityAI.Considerations
                 if(nodeArea.ArmyStrength > highestValue) { highestValue = nodeArea.ArmyStrength; }
                 if(nodeArea.ArmyStrength < LowestValue) { LowestValue = nodeArea.ArmyStrength; }
             }
+            if (LowestValue == 0)
+            {
+                if (_invertResponse)
+                {
+                    score = 0;
+                }
+                else
+                {
+                    score = 1;
+                }
+                return score;
+            }
             if(Mathf.Abs(LowestValue) > highestValue)
             {
                 if (_invertResponse)
@@ -54,7 +66,7 @@ namespace UtilityAI.Considerations
             score = _responseCurve.Evaluate(value);
             if (_invertResponse)
             {
-                value = 1 - value;
+                score = 1 - score;
             }
             return score;
         }

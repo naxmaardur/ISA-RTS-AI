@@ -10,7 +10,9 @@ public class ArmyActorBase : MonoBehaviour, IPropagator
     protected ArmyMaster _army;
     public ArmyMaster ArmyMaster { get { return _army; } }
 
+    [SerializeField]
     protected float _health;
+    [SerializeField]
     protected float _MaxHealth = 0;
     public float Health { get { return _health; } set { _health = Mathf.Clamp(value, 0, _MaxHealth); } }
     public float MaxHealth { get { return _MaxHealth; } set { if (_MaxHealth == 0) { _MaxHealth = value; }  } }

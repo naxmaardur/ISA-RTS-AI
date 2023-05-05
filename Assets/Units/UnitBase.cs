@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class UnitBase : ArmyActorBase
 {
     private NavMeshAgent _navMeshAgent;
+    [SerializeField]
     private ArmyActorBase _target;
     public ArmyActorBase Target { get { return _target; } }
     public UnitScritableObject unitScritable;
@@ -23,6 +24,7 @@ public class UnitBase : ArmyActorBase
     private LayerMask ArmyActorsMask;
 
     bool followTarget;
+    float TimeOutOfRange;
 
 
 
@@ -201,9 +203,10 @@ public class UnitBase : ArmyActorBase
 
         //if it is a player unity target a random enemy 
         //they need to target the correct enemy types them selfs, this is just so that a unit continues to attack in a fight
-        if (ArmyMaster.IsPlayer)
+        if (ArmyMaster != null && ArmyMaster.IsPlayer)
         {
             TargetEnemy(armyActors[UnityEngine.Random.Range(0, armyActors.Count)]);
+            
             return;
         }
 
@@ -288,6 +291,14 @@ public class UnitBase : ArmyActorBase
         Vector3 testFleePoint = new Vector3(173, 0, 168);
         MakePathToPosition(testFleePoint);
         followTarget = false;
+        yield return null;
+    }
+
+    public IEnumerator StayOnPostion()
+    {
+        MakePathToPosition(transform.position);
+        followTarget = false;
+        pathDestination = Vector3.zero;
         yield return null;
     }
 
