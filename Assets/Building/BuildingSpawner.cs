@@ -143,6 +143,7 @@ public class BuildingSpawner : Singleton<BuildingSpawner>
         _active = true;
         //set the preview and size of the trigger.
         _buildingInstance = Instantiate(building.buildingPrefab, new Vector3(0, 600, 0), Quaternion.identity).GetComponent<BuildingBase>();
+        _buildingInstance.MaxHealth = building.health;
         _buildingInstance.Health = building.health;
         _instanceBoxCollider = _buildingInstance.GetComponent<BoxCollider>();
         _instanceBoxCollider.isTrigger = true;

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 251143dbd69cf4c4ba00fe5052200412, type: 3}
-  m_Name: ShouldIFleeArea
+  m_Script: {fileID: 11500000, guid: 084ae863d4474384baf7b73efc6a2163, type: 3}
+  m_Name: ShouldInotfollowaEnemy
   m_EditorClassIdentifier: 
-  Name: Should I flee the area
+  Name: Should I not follow a Enemy
   _responseCurve:
     serializedVersion: 2
     m_Curve:
@@ -64,3 +64,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _invertResponse: 1

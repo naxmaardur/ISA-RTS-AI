@@ -11,7 +11,9 @@ public class ArmyActorBase : MonoBehaviour, IPropagator
     public ArmyMaster ArmyMaster { get { return _army; } }
 
     protected float _health;
-    public float Health { get { return _health; } set { _health = Mathf.Clamp(value, 0, 5000); } }
+    protected float _MaxHealth = 0;
+    public float Health { get { return _health; } set { _health = Mathf.Clamp(value, 0, _MaxHealth); } }
+    public float MaxHealth { get { return _MaxHealth; } set { if (_MaxHealth == 0) { _MaxHealth = value; }  } }
 
     protected Vector2I _gridPosition;
     public Vector2I GridPosition { get { return _gridPosition; } }
@@ -25,6 +27,10 @@ public class ArmyActorBase : MonoBehaviour, IPropagator
     protected float armyInfluenceValue = 1;
 
     public float ArmyInfluenceValue { get { return armyInfluenceValue; } }
+
+    public delegate void OndeathEvent();
+    public OndeathEvent Ondeath;
+
 
     private void Awake()
     {
@@ -48,7 +54,6 @@ public class ArmyActorBase : MonoBehaviour, IPropagator
         Node n = Grid.Instance.getSafeNodeFromWordlPoint(transform.position);
         _gridPosition = new Vector2I(n.X, n.Y);
     }
-
 
     // Start is called before the first frame update
     void Start()

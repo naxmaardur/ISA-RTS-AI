@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ff6573b11e60a44930e8d7685e60f9, type: 3}
   m_Name: DoIHaveATarget
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Do I Have A Target
   _responseCurve:
     serializedVersion: 2
     m_Curve: []

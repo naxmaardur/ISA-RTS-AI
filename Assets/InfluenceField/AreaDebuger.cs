@@ -18,7 +18,7 @@ public class AreaDebuger : MonoBehaviour
         for (int x = 0; x < Grid.Instance.Areas.Length; x++)
         {
             GameObject g = Instantiate(DebugUIPreFab,transform);
-            g.transform.position = Grid.Instance.Areas[x].Center + (Vector3.up * 20);
+            g.transform.position = Grid.Instance.Areas[x].Center + (Vector3.up * 60);
             g.transform.rotation = rotation;
             TextMeshProUGUI textMeshPro = g.GetComponentInChildren<TextMeshProUGUI>();
             displays.Add(textMeshPro);

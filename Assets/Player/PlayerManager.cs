@@ -64,7 +64,7 @@ public class PlayerManager : MonoBehaviour
             foreach (UnitBase unit in _units)
             {
                 //Give Unit Right click info
-                unit.GiveOrder(gameObject, point);
+                unit?.GiveOrder(gameObject, point);
             }
         }
     }

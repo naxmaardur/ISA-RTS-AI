@@ -10,6 +10,7 @@ namespace UtilityAI.Considerations
     public class ShouldIFleeArea : Consideration
     {
         [SerializeField] private AnimationCurve _responseCurve;
+        [SerializeField] private bool _invertResponse;
 
         public override float ScoreConsideration(ArmyActorBase npc)
         {
@@ -24,12 +25,25 @@ namespace UtilityAI.Considerations
             }
             if (Mathf.Abs(LowestValue) < highestValue)
             {
-                score = 0;
+                if (_invertResponse) { 
+                    score = 1;
+                }
+                else
+                {
+                    score = 0;
+                }
                 return score;
             }
             if (highestValue == 0)
             {
-                score = _responseCurve.Evaluate(4); ;
+                if (_invertResponse)
+                {
+                    score = 0;
+                }
+                else
+                {
+                    score = 1;
+                }
                 return score;
             }
 
@@ -48,7 +62,10 @@ namespace UtilityAI.Considerations
 
 
             score = _responseCurve.Evaluate(value);
-            Debug.Log(value + " = " + score);
+            if (_invertResponse)
+            {
+                value = 1 - value;
+            }
             return score;
         }
     }

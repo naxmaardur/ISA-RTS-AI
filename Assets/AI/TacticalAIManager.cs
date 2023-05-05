@@ -59,6 +59,7 @@ public class TacticalAIManager
         BuildingBase buildingInstance = buildingObject.GetComponent<BuildingBase>();
         buildingInstance.AddtoMaster(_army);
         buildingInstance.PlacedEvent?.Invoke();
+        buildingInstance.MaxHealth = building.health;
         buildingInstance.Health = building.health;
         _army.RemoveMoney(buildingInstance.scritableObjectOfThisBuilding.cost);
         AddBuildingToCorrectList(buildingInstance);

@@ -44,6 +44,11 @@ public class BuildingBase : ArmyActorBase
         armyMaster.RemoveMoney(scritableObjectOfThisBuilding.cost);
         armyMaster.AddBuildingToList(this);
         _army = armyMaster;
+        if (armyMaster.IsPlayer)
+        {
+            influenceValue = -influenceValue;
+            armyInfluenceValue = -armyInfluenceValue;
+        }
         Grid.Instance.AddEntityToALLMaps(this);
         SetNewGridPosition();
     }
@@ -114,6 +119,7 @@ public class BuildingBase : ArmyActorBase
         UnitBase unit = gameObject.GetComponent<UnitBase>();
         unit.SetArmy(ArmyMaster);
         unit.unitScritable = _unitConstructionQueue[0];
+        unit.MaxHealth = _unitConstructionQueue[0].health;
         unit.Health = _unitConstructionQueue[0].health;
 
         _unitConstructionQueue.RemoveAt(0);
@@ -122,4 +128,9 @@ public class BuildingBase : ArmyActorBase
         StopCoroutine(_constructionCoroutine);
     }
 
+
+    public void OnDestroy()
+    {
+        Ondeath?.Invoke();
+    }
 }

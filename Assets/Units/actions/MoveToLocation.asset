@@ -15,3 +15,5 @@ MonoBehaviour:
   Name: Move to Location
   considerations:
   - {fileID: 11400000, guid: 93a39d47ad32d844c827b20969da86f9, type: 2}
+  - {fileID: 11400000, guid: e68aebbf508c3294ebf38b2a8072d52b, type: 2}
+  - {fileID: 11400000, guid: 8c91d7ba3bb91aa4386ae3b4b6ce4606, type: 2}
