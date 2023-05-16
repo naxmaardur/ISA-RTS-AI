@@ -20,6 +20,7 @@ public class AreaDebuger : MonoBehaviour
             GameObject g = Instantiate(DebugUIPreFab,transform);
             g.transform.position = Grid.Instance.Areas[x].Center + (Vector3.up * 60);
             g.transform.rotation = rotation;
+            g.name = ""+x;
             TextMeshProUGUI textMeshPro = g.GetComponentInChildren<TextMeshProUGUI>();
             displays.Add(textMeshPro);
         }
@@ -41,8 +42,10 @@ public class AreaDebuger : MonoBehaviour
         if(!DrawGizmos) { return; }
         if (Grid.Instance == null) { return; }
         if (Grid.Instance.Areas == null) { return; }
+        int i= -1;
         foreach (NodeArea area in Grid.Instance.Areas)
         {
+            i++;
             if (area.ArmyStrength == 0) { continue; }
             if(area.ArmyStrength > 0)
             {
@@ -53,7 +56,7 @@ public class AreaDebuger : MonoBehaviour
             }
             foreach (Node n in area.Nodes)
             {
-                Gizmos.DrawCube(n._worldPoint, new Vector3(0.9f, 0.9f, 0.9f));
+                Gizmos.DrawCube(n._worldPoint + (Vector3.up * i), new Vector3(0.9f, 0.9f, 0.9f));
             }
         }
     }

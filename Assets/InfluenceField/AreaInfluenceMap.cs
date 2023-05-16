@@ -61,6 +61,8 @@ public class AreaInfluenceMap
 		UpdateEntities();
 		UpdatePropagation();
 		UpdateInfluenceBuffer();
+		UpdatePropagation();
+		UpdateInfluenceBuffer();
 	}
 
 	void UpdateEntities()
@@ -100,7 +102,17 @@ public class AreaInfluenceMap
 					minInf = Mathf.Min(inf, minInf);
 				}
 				float Inf = maxInf + minInf;
-					_influences[x].ArmyStrength = Mathf.Lerp(_influencesBuffer[x], Inf, momentum);
+				if(x == 2)
+				{
+					Debug.Log(Inf);
+				}
+				_influences[x].ArmyStrength = Mathf.Lerp(_influencesBuffer[x], Inf, momentum);
+
+			//setting the influence to the greater value.
+			/*if (Mathf.Abs(minInf) > maxInf)
+			_influences[x].ArmyStrength = Mathf.Lerp(_influencesBuffer[x], minInf, momentum);
+			else
+				_influences[x].ArmyStrength = Mathf.Lerp(_influencesBuffer[x], maxInf, momentum);*/
 		}
 	}
 

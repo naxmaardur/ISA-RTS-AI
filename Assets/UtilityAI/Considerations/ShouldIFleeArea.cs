@@ -16,8 +16,8 @@ namespace UtilityAI.Considerations
         {
             //get node area actor is in
             NodeArea Currentarea = Grid.Instance.GridArray[npc.GridPosition.x, npc.GridPosition.y].NodeArea;
-            float highestValue = Mathf.NegativeInfinity;
-            float LowestValue = 0;
+            float highestValue = Currentarea.ArmyStrength;
+            float LowestValue = Currentarea.ArmyStrength;
             foreach (NodeArea nodeArea in Currentarea.Neigbors)
             {
                 if (nodeArea.ArmyStrength > highestValue) { highestValue = nodeArea.ArmyStrength; }

@@ -1,0 +1,12 @@
+TODO
+add initial starting building
+
+Add Code for AI to Detect and keep track of: gold vains gold mines and gold in possesion
+Add Code for AI to place Unit buildings
+Add Code for AI to make Units
+Add Code for AI to Send Unit Groups to Locations (attack/defend/idel)
+
+Add Code for Camera Control of player
+
+Potenialy Add code for fog of war (can make use of infulence map I think)
+

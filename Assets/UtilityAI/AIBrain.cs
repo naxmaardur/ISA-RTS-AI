@@ -59,13 +59,10 @@ namespace UtilityAI
         public float ScoreAction(Action action)
         {
             float score = 1f;
-            Debug.Log(action);
             for (int i = 0; i < action.considerations.Length; i++)
             {
                 float considerationScore = action.considerations[i].ScoreConsideration(npc);
-                Debug.Log(considerationScore + " " + action.considerations[i].name);
                 score *= considerationScore;
-
                 if (score == 0)
                 {
                     action.score = 0;

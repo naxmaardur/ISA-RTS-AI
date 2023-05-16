@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf49427a1cf2ac418e35f30644ba3b7, type: 3}
   m_Name: StayOnPosition
   m_EditorClassIdentifier: 
-  Name: 
-  considerations: []
+  Name: for default fall back actions
+  considerations:
+  - {fileID: 11400000, guid: 152af9c44409b0a4aa88af35e9286542, type: 2}

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a269352d5fbe7478c0c04a34aa0c2e, type: 3}
+  m_Name: Unit C
+  m_EditorClassIdentifier: 
+  type: 2
+  cost: 0
+  constructTime: 9
+  unitPrefab: {fileID: 6395610220893925317, guid: 271bf50492b09dc4788a4c2471240bc4, type: 3}
+  health: 5
+  speed: 0
+  range: 14
+  attack: 0
