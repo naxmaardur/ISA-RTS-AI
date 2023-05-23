@@ -55,5 +55,19 @@ public class ArmyAssetList
         }
         return units.ToArray();
     }
-    
+
+    public BuildingScriptableObject[] GetBuildingsOfType(int type)
+    {
+
+        List<BuildingScriptableObject> buildings = new();
+        foreach (BuildingScriptableObject building in this.buildings)
+        {
+            if (building.type == type)
+            {
+                buildings.Add(building);
+            }
+        }
+        return buildings.ToArray();
+    }
+
 }

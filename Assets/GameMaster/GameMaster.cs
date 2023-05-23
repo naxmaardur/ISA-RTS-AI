@@ -37,6 +37,17 @@ public class GameMaster : Singleton<GameMaster>
         //}
         grid = Grid.Instance;
         grid.SetupCorotines(this);
+        SpawnStartingBuildings();
+    }
+
+
+    void SpawnStartingBuildings()
+    {
+        BasePoint[] points = FindObjectsOfType<BasePoint>();
+        GameObject building = Instantiate(_armyAssets[0].GetBuildingsOfType(200)[0].buildingPrefab, grid.getSafeNodeFromWordlPoint(points[0].transform.position)._worldPoint, Quaternion.identity);
+        building.GetComponent<BuildingBase>().AddtoMaster(_armyMasters[1]);
+        building = Instantiate(_armyAssets[0].GetBuildingsOfType(200)[0].buildingPrefab, grid.getSafeNodeFromWordlPoint(points[1].transform.position)._worldPoint, Quaternion.identity);
+        building.GetComponent<BuildingBase>().AddtoMaster(_armyMasters[0]);
     }
 
     //find the players army in the list of all armies

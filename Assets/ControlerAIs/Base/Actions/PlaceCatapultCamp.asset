@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1be718b7eba33640a4636d735a55112, type: 3}
+  m_Name: PlaceCatapultCamp
+  m_EditorClassIdentifier: 
+  Name: 
+  considerations:
+  - {fileID: 11400000, guid: 63db8d6b40604cf4aa08bddd34286f67, type: 2}
+  - {fileID: 11400000, guid: 6ac562fec7d806049ad166e73829fca9, type: 2}

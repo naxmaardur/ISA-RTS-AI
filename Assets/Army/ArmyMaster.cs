@@ -24,6 +24,7 @@ public class ArmyMaster
 
 
     public List<BuildingBase> Buildings { get { return _buildings; } }
+    public List<UnitBase> Units { get { return _units; } }
 
     public void AddBuildingToList(BuildingBase building)
     {
