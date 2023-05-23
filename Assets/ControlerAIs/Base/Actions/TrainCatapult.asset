@@ -9,9 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6938bddf72729c4ea4aed414b8ccb05, type: 3}
+  m_Script: {fileID: 11500000, guid: 97db6c4fc1ccf814d9616f8eb584143e, type: 3}
   m_Name: TrainCatapult
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Catapult
   considerations:
   - {fileID: 11400000, guid: 6ac562fec7d806049ad166e73829fca9, type: 2}
+  - {fileID: 11400000, guid: 8c7683fe46e41cc4db174caeef6d24ba, type: 2}
+  - {fileID: 11400000, guid: ed5e6221dd317424e8a993d41e7748f6, type: 2}
+  - {fileID: 11400000, guid: 44ab7e5f900c5344e9be9908bf3a22f0, type: 2}
+  - {fileID: 11400000, guid: ce9a2b8fbaaeffd4a967331a3ea55932, type: 2}
+  type: 2

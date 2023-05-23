@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95380fd83ba02d74e9305f7144d7e31a, type: 3}
   m_Name: InfantryTrainingCamp
   m_EditorClassIdentifier: 
+  type: 0
+  unitConstuctionType: 0
   buildingPrefab: {fileID: 4484525651665140816, guid: 4c6edda94217e7d4c8c0b7fe5c24a413, type: 3}
-  cost: 0
+  cost: 200
+  health: 0
+  range: 0
+  attack: 0

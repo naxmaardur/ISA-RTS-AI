@@ -27,6 +27,7 @@ public class BuildingListUI : MonoBehaviour
         if (_armyAssets == null) { return; }
         foreach (BuildingScriptableObject building in _armyAssets.GetBuildings)
         {
+            if(building.type == 200) { continue; }
             //add buttons to link building to the mouse.
             Instantiate(_buildingUIButtonPrefab, _ContentHolder).GetComponent<BuildingUIButton>().AssignBuildingToButton(building);
         }

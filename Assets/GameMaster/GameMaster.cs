@@ -11,7 +11,6 @@ public class GameMaster : Singleton<GameMaster>
     private ArmyAssetList[] _armyAssets = {null,null };
     [SerializeField]
     private ArmyMaster[] _armyMasters = {null,null};
-    private TacticalAIManager[] _enemyAi = { null };
     private Grid grid;
 
 
@@ -27,13 +26,14 @@ public class GameMaster : Singleton<GameMaster>
         Instance = this;
         new Grid(200, 200, 1);
         _armyAssets[0] = new ArmyAssetList(0);
+        _armyAssets[1] = new ArmyAssetList(1);
         //temp code{
         _armyMasters[0] = new ArmyMaster();
         _armyMasters[0].IsPlayer = true;
         _armyMasters[1] = new ArmyMaster();
+        _armyMasters[1].armyID = 1;
         _armyMasters[1].IsPlayer = false;
-        _enemyAi[0] = new TacticalAIManager();
-        _enemyAi[0].SetUpAIApponent(_armyMasters[1], _armyAssets[0]);
+        FindObjectOfType<BaseAI>().SetUpAIApponent(_armyMasters[1], _armyAssets[1]);
         //}
         grid = Grid.Instance;
         grid.SetupCorotines(this);
@@ -44,10 +44,14 @@ public class GameMaster : Singleton<GameMaster>
     void SpawnStartingBuildings()
     {
         BasePoint[] points = FindObjectsOfType<BasePoint>();
-        GameObject building = Instantiate(_armyAssets[0].GetBuildingsOfType(200)[0].buildingPrefab, grid.getSafeNodeFromWordlPoint(points[0].transform.position)._worldPoint, Quaternion.identity);
-        building.GetComponent<BuildingBase>().AddtoMaster(_armyMasters[1]);
+        GameObject building = Instantiate(_armyAssets[1].GetBuildingsOfType(200)[0].buildingPrefab, grid.getSafeNodeFromWordlPoint(points[0].transform.position)._worldPoint, Quaternion.identity);
+        MineBuilding mine = building.GetComponent<MineBuilding>();
+        mine.AddtoMaster(_armyMasters[1]);
+        mine.PlacedEvent?.Invoke();
         building = Instantiate(_armyAssets[0].GetBuildingsOfType(200)[0].buildingPrefab, grid.getSafeNodeFromWordlPoint(points[1].transform.position)._worldPoint, Quaternion.identity);
-        building.GetComponent<BuildingBase>().AddtoMaster(_armyMasters[0]);
+        mine = building.GetComponent<MineBuilding>();
+        mine.AddtoMaster(_armyMasters[0]);
+        mine.PlacedEvent?.Invoke();
     }
 
     //find the players army in the list of all armies
@@ -68,10 +72,7 @@ public class GameMaster : Singleton<GameMaster>
     // Update is called once per frame
     void Update()
     {
-        foreach(TacticalAIManager tacticalAI in _enemyAi)
-        {
-            tacticalAI.Update();
-        }
+        
         
     }
 

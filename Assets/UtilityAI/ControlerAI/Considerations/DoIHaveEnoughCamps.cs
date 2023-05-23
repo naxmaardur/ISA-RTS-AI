@@ -11,7 +11,7 @@ public class DoIHaveEnoughCamps : ControlerConsideration
     public override float ScoreConsideration(ControlerAI npc)
     {
         int camp = npc.GetCampCount(type);
-        float responce = _responseCurve.Evaluate(UtiltyFunctions.Remap(camp, 0, 0, 3, 1));
+        float responce = _responseCurve.Evaluate(UtiltyFunctions.Remap(camp, 0, 3, 0, 1));
         if (invertResponse)
         {
             responce = 1 - responce;

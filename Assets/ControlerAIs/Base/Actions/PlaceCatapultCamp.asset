@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1be718b7eba33640a4636d735a55112, type: 3}
+  m_Script: {fileID: 11500000, guid: 359fd2b1e397c7346b02a93343dbf80f, type: 3}
   m_Name: PlaceCatapultCamp
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Catapult camp
   considerations:
   - {fileID: 11400000, guid: 63db8d6b40604cf4aa08bddd34286f67, type: 2}
   - {fileID: 11400000, guid: 6ac562fec7d806049ad166e73829fca9, type: 2}
+  - {fileID: 11400000, guid: 768a4caa294383147856c4b6cb24dc8c, type: 2}
+  - {fileID: 11400000, guid: 44ab7e5f900c5344e9be9908bf3a22f0, type: 2}
+  type: 2

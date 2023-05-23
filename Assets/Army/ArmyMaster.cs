@@ -30,6 +30,25 @@ public class ArmyMaster
     {
         _buildings.Add(building);
     }
+    public void AddUnitToList(UnitBase unit)
+    {
+        _units.Add(unit);
+    }
+
+    public void RemoveBuildingFromList(BuildingBase building)
+    {
+        if (_buildings.Contains(building))
+        {
+            _buildings.Remove(building);
+        }
+    }
+    public void RemoveUnitFromList(UnitBase unit)
+    {
+        if (_units.Contains(unit))
+        {
+            _units.Remove(unit);
+        }
+    }
 
     public void RemoveMoney(int toRemove)
     {

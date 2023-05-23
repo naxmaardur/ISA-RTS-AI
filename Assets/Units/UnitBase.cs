@@ -101,6 +101,7 @@ public class UnitBase : ArmyActorBase
     public void SetArmy(ArmyMaster armyMaster)
     {
         _army = armyMaster;
+        _army.AddUnitToList(this);
         if (armyMaster.IsPlayer)
         {
             influenceValue = -influenceValue;
@@ -108,7 +109,7 @@ public class UnitBase : ArmyActorBase
         }
         else
         {
-            aIBrain.DecideBestAction();
+            //aIBrain.DecideBestAction();
         }
         //Grid.Instance.AddEntityToALLMaps(this);
     }
@@ -154,7 +155,7 @@ public class UnitBase : ArmyActorBase
     public void MakePathToPosition(Vector3 position)
     {
         //pathDestination = position;
-        _navMeshAgent.SetDestination(position);
+        _navMeshAgent?.SetDestination(position);
         _navMeshAgent.isStopped = false;
     }
 
@@ -323,6 +324,7 @@ public class UnitBase : ArmyActorBase
 
     private void OnDestroy()
     {
+        _army.RemoveUnitFromList(this);
         if (_formationParent != null) { _formationParent.RemoveUnit(this); }
         Grid.Instance.RemoveEntityFromALLMaps(this);
         Ondeath?.Invoke();

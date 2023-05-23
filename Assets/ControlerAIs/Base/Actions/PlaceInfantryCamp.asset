@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05cb270f415b1db4fa1a1f7662d37b75, type: 3}
+  m_Script: {fileID: 11500000, guid: 359fd2b1e397c7346b02a93343dbf80f, type: 3}
   m_Name: PlaceInfantryCamp
   m_EditorClassIdentifier: 
-  Name: 
+  Name: infantry camp
   considerations:
   - {fileID: 11400000, guid: d5aa9425fd5e8e84483ced406ae1feb5, type: 2}
+  - {fileID: 11400000, guid: 768a4caa294383147856c4b6cb24dc8c, type: 2}
   - {fileID: 11400000, guid: 9b2d261800373e8468a8ad862b9fca4c, type: 2}
+  - {fileID: 11400000, guid: 44ab7e5f900c5344e9be9908bf3a22f0, type: 2}
+  type: 0

@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4991884832101472380
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2171766972032310351, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bff67f73092de30439b8488386b9bd34, type: 2}
+    - target: {fileID: 2494654061998055883, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bff67f73092de30439b8488386b9bd34, type: 2}
+    - target: {fileID: 4432390095363998417, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0b636763e9223894cb4b5d4407b4e4e1, type: 2}
+    - target: {fileID: 4484525651665140816, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}
+      propertyPath: m_Name
+      value: InfantryTrainingCamp 1 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5180675357525327520, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0b636763e9223894cb4b5d4407b4e4e1, type: 2}
+    - target: {fileID: 5884547014857193972, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}
+      propertyPath: scritableObjectOfThisBuilding
+      value: 
+      objectReference: {fileID: 11400000, guid: 64170bda786f9f546aecd47098e73a6a, type: 2}
+    - target: {fileID: 7801828276624712867, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0b636763e9223894cb4b5d4407b4e4e1, type: 2}
+    - target: {fileID: 7971472330195907809, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971472330195907809, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 178.17278
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971472330195907809, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971472330195907809, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 157.94305
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971472330195907809, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971472330195907809, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971472330195907809, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971472330195907809, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971472330195907809, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971472330195907809, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971472330195907809, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3a35ba7069df8f148bfbca5dd230d813, type: 3}

@@ -102,10 +102,6 @@ public class AreaInfluenceMap
 					minInf = Mathf.Min(inf, minInf);
 				}
 				float Inf = maxInf + minInf;
-				if(x == 2)
-				{
-					Debug.Log(Inf);
-				}
 				_influences[x].ArmyStrength = Mathf.Lerp(_influencesBuffer[x], Inf, momentum);
 
 			//setting the influence to the greater value.

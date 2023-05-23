@@ -15,3 +15,8 @@ MonoBehaviour:
   Name: 
   considerations:
   - {fileID: 11400000, guid: 9b2d261800373e8468a8ad862b9fca4c, type: 2}
+  - {fileID: 11400000, guid: 6cba9f142d2b86846982e04b9a48714f, type: 2}
+  - {fileID: 11400000, guid: a5ea7c2aabd0f654e8263e80ff9acb20, type: 2}
+  - {fileID: 11400000, guid: 44ab7e5f900c5344e9be9908bf3a22f0, type: 2}
+  - {fileID: 11400000, guid: 04c286b75e07eaf4c8e9a41015df8f14, type: 2}
+  type: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuildingBase : ArmyActorBase
 {
     public BuildingScriptableObject scritableObjectOfThisBuilding;
+    [SerializeField]
     private List<UnitScritableObject> _unitConstructionQueue = new();
     private List<UnitShopUIButton> _buttons = new();
     private Coroutine _constructionCoroutine;
@@ -131,6 +132,7 @@ public class BuildingBase : ArmyActorBase
     
     public void OnDestroy()
     {
+        _army?.RemoveBuildingFromList(this);
         Ondeath?.Invoke();
     }
 }

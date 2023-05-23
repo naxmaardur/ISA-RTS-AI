@@ -12,4 +12,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f27999c1fd0ee142be379454e52108c, type: 3}
   m_Name: DoIHaveEnoughBalistas
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Balista
+  _responseCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.1373638
+      outSlope: -0.1373638
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.30019107
+      value: 0.9587646
+      inSlope: -0.65063995
+      outSlope: -0.65063995
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.15457799
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.66916317
+      value: 0.20318449
+      inSlope: -1.3309753
+      outSlope: -1.3309753
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.61415315
+      outSlope: -0.61415315
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  unitType: 1
+  strongAgainst: 2

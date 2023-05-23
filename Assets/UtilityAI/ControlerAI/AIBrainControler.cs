@@ -44,7 +44,6 @@ namespace UtilityAIControler
                     score = actionsAvailable[i].score;
                 }
             }
-
             bestAction = actionsAvailable[nextBestActionIndex];
             if(bestAction == LastAction) { finishedDeciding = true; return; }
             bestAction.SetRequiredDestination(npc);

@@ -9,7 +9,7 @@ public class MineBuilding : BuildingBase
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         PlacedEvent += StartTick;
     }
@@ -17,7 +17,7 @@ public class MineBuilding : BuildingBase
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void StartTick()
@@ -27,7 +27,10 @@ public class MineBuilding : BuildingBase
 
     private IEnumerator MoneyTick()
     {
-        yield return new WaitForSeconds(1);
-        _army.AddMoney(_moneyPerSecond);
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            _army.AddMoney(_moneyPerSecond);
+        }
     }
 }

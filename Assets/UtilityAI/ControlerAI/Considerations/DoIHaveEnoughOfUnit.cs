@@ -10,13 +10,16 @@ public class DoIHaveEnoughOfUnit : ControlerConsideration
     [SerializeField] private int strongAgainst = 0;
     public override float ScoreConsideration(ControlerAI npc)
     {
-        int unitCount = npc.GetEnemyUnitCountByType(unitType);
+        int unitCount = npc.GetUnitCountByType(unitType);
         unitCount += npc.GetUnitsInconstruction(unitType);
         int unitCountStrong = npc.GetEnemyUnitCountByType(strongAgainst);
         unitCountStrong += npc.GetEnemyUnitsInconstruction(strongAgainst);
-
+        if(unitCountStrong == 0)
+        {
+            unitCountStrong = 1;
+        }
         float ComparativePercentage = unitCount/unitCountStrong;
         ComparativePercentage = Mathf.Clamp(ComparativePercentage, 0, 3);
-        return _responseCurve.Evaluate(UtiltyFunctions.Remap(ComparativePercentage, 0, 0, 3, 1));
+        return _responseCurve.Evaluate(UtiltyFunctions.Remap(ComparativePercentage, 0, 3, 0, 1));
     }
 }
