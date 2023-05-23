@@ -128,10 +128,7 @@ public class BuildingBase : ArmyActorBase
         StopCoroutine(_constructionCoroutine);
     }
 
-    public int queueLength()
-    {
-        return _unitConstructionQueue.Count;
-    }
+    
     public void OnDestroy()
     {
         Ondeath?.Invoke();

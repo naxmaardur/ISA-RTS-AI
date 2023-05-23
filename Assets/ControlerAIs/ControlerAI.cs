@@ -39,7 +39,20 @@ public class ControlerAI : MonoBehaviour
         {
             if (building.scritableObjectOfThisBuilding.type == 0 && building.scritableObjectOfThisBuilding.unitConstuctionType == unitType)
             {
-                i += building.queueLength();
+                i += building.UnitQueueLength;
+            }
+        }
+        return i;
+    }
+    public int GetEnemyUnitsInconstruction(int unitType)
+    {
+        int i = 0;
+
+        foreach (BuildingBase building in GameMaster.Instance.GetPlayer().Buildings)
+        {
+            if (building.scritableObjectOfThisBuilding.type == 0 && building.scritableObjectOfThisBuilding.unitConstuctionType == unitType)
+            {
+                i += building.UnitQueueLength;
             }
         }
         return i;

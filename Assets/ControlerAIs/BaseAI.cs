@@ -22,8 +22,42 @@ public class BaseAI : ControlerAI
     {
         while (true)
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(0.2f);
             aIBrain.DecideBestAction();
         }
     }
+
+
+    public void ConstructUnit(int type)
+    {
+        BuildingBase camp = null;
+        int queueLength = 20000;
+        foreach (BuildingBase building in Army.Buildings)
+        {
+            if (building.scritableObjectOfThisBuilding.type == 0 && building.scritableObjectOfThisBuilding.unitConstuctionType == type)
+            {
+                if(building.UnitQueueLength < queueLength)
+                {
+                    camp = building;
+                    queueLength = building.UnitQueueLength;
+                }
+            }
+        }
+
+        if(camp == null) { return; }
+        UnitScritableObject[] units = GameMaster.Instance.GetArmyAssetList(camp.ArmyMaster.armyID).GetUnitsOfType(camp.scritableObjectOfThisBuilding.unitConstuctionType);
+        camp.AddUnitToQueue(units[0]);
+    }
+
+
+    public void ConstructCamp()
+    {
+
+    }
+
+    public void ConstructMine()
+    {
+
+    }
+
 }
