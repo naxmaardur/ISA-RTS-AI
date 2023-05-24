@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DoIHaveEnoughMoneyForCatapult
   m_EditorClassIdentifier: 
   Name: Catapult
-  moneyNeeded: 10000
+  moneyNeeded: 14
   unitScritableObject: {fileID: 11400000, guid: fca46283908a55c4790018067201e7b2, type: 2}

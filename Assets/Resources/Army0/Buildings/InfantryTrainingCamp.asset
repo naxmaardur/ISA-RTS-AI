@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 0
   unitConstuctionType: 0
   buildingPrefab: {fileID: 4484525651665140816, guid: 4c6edda94217e7d4c8c0b7fe5c24a413, type: 3}
-  cost: 200
+  cost: 15
   health: 0
   range: 0
   attack: 0

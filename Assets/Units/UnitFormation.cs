@@ -12,6 +12,10 @@ public class UnitFormation : MonoBehaviour
     private List<UnitBase> units;
 
 
+    public int FormationMaxSize { get { return FormationPositions.Length; } }
+    public int FormationSize { get { return units.Count; } }
+
+
 
 
     public void AddUnit(UnitBase unit)

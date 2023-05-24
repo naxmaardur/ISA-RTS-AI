@@ -34,6 +34,7 @@ public class GameMaster : Singleton<GameMaster>
         _armyMasters[1].armyID = 1;
         _armyMasters[1].IsPlayer = false;
         FindObjectOfType<BaseAI>().SetUpAIApponent(_armyMasters[1], _armyAssets[1]);
+        FindObjectOfType<ArmyControlAI>().SetUpAIApponent(_armyMasters[1], _armyAssets[1]);
         //}
         grid = Grid.Instance;
         grid.SetupCorotines(this);
@@ -44,11 +45,11 @@ public class GameMaster : Singleton<GameMaster>
     void SpawnStartingBuildings()
     {
         BasePoint[] points = FindObjectsOfType<BasePoint>();
-        GameObject building = Instantiate(_armyAssets[1].GetBuildingsOfType(200)[0].buildingPrefab, grid.getSafeNodeFromWordlPoint(points[0].transform.position)._worldPoint, Quaternion.identity);
+        GameObject building = Instantiate(_armyAssets[1].GetBuildingsOfType(200)[0].buildingPrefab, grid.getSafeNodeFromWordlPoint(points[1].transform.position)._worldPoint, Quaternion.identity);
         MineBuilding mine = building.GetComponent<MineBuilding>();
         mine.AddtoMaster(_armyMasters[1]);
         mine.PlacedEvent?.Invoke();
-        building = Instantiate(_armyAssets[0].GetBuildingsOfType(200)[0].buildingPrefab, grid.getSafeNodeFromWordlPoint(points[1].transform.position)._worldPoint, Quaternion.identity);
+        building = Instantiate(_armyAssets[0].GetBuildingsOfType(200)[0].buildingPrefab, grid.getSafeNodeFromWordlPoint(points[0].transform.position)._worldPoint, Quaternion.identity);
         mine = building.GetComponent<MineBuilding>();
         mine.AddtoMaster(_armyMasters[0]);
         mine.PlacedEvent?.Invoke();

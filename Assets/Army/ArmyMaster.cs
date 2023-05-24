@@ -21,7 +21,8 @@ public class ArmyMaster
 
     public delegate void OnActorDestroyedEvent(ArmyActorBase actor);
     public OnActorDestroyedEvent OnActorDestroyed;
-
+    public delegate void OnUnitAddedEvent(UnitBase actor);
+    public OnUnitAddedEvent OnUnitAdded;
 
     public List<BuildingBase> Buildings { get { return _buildings; } }
     public List<UnitBase> Units { get { return _units; } }
@@ -33,6 +34,7 @@ public class ArmyMaster
     public void AddUnitToList(UnitBase unit)
     {
         _units.Add(unit);
+        OnUnitAdded?.Invoke(unit);
     }
 
     public void RemoveBuildingFromList(BuildingBase building)

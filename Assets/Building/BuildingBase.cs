@@ -118,8 +118,8 @@ public class BuildingBase : ArmyActorBase
         //spawn unit;
         GameObject gameObject = Instantiate(_unitConstructionQueue[0].unitPrefab, SpawnPoint.position, Quaternion.identity);
         UnitBase unit = gameObject.GetComponent<UnitBase>();
-        unit.SetArmy(ArmyMaster);
         unit.unitScritable = _unitConstructionQueue[0];
+        unit.SetArmy(ArmyMaster);
         unit.MaxHealth = _unitConstructionQueue[0].health;
         unit.Health = _unitConstructionQueue[0].health;
 

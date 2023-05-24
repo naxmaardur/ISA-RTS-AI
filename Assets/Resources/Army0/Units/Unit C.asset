@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Unit C
   m_EditorClassIdentifier: 
   type: 2
-  cost: 0
+  cost: 14
   constructTime: 9
   unitPrefab: {fileID: 6395610220893925317, guid: 271bf50492b09dc4788a4c2471240bc4, type: 3}
   health: 5

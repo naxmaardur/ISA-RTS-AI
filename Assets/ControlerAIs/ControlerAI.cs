@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ControlerAI : MonoBehaviour
 {
-    protected ArmyMaster army;
-    protected ArmyAssetList armyAssets;
+    public ArmyMaster army;
+    public ArmyAssetList armyAssets;
 
     public int GetMineCount()
     {
